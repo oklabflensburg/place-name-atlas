@@ -1,0 +1,6 @@
+{
+  "host": "127.0.0.1",
+  "apiPort": 8015,
+  "webPort": 3015,
+  "domain": "ortsnamenatlas.oklabflensburg.de"
+}

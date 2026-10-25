@@ -1,5 +1,5 @@
-# Include inside the application's EXISTING server block.
-# Keep the existing listen, server_name and TLS configuration.
+# Include inside the application's server block (generated or existing).
+# The enclosing server block defines listen, server_name and TLS.
 client_max_body_size 32k;
 client_header_buffer_size 4k;
 large_client_header_buffers 4 64k;

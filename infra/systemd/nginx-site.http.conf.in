@@ -1,0 +1,14 @@
+# HTTP bootstrap while obtaining the certificate; use nginx-site.https.conf afterwards.
+server {
+    listen 80;
+    listen [::]:80;
+    server_name @DOMAIN@;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root @ACME_WEBROOT@;
+        default_type text/plain;
+        try_files $uri =404;
+    }
+
+    include @LOCATIONS@;
+}

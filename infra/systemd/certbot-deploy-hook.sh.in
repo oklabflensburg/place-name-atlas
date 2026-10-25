@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+
+# Certbot runs deploy hooks for all lineages; reload only for this certificate.
+[ "${RENEWED_LINEAGE:-}" = @CERTIFICATE_DIRECTORY@ ] || exit 0
+/usr/sbin/nginx -t
+/usr/bin/systemctl reload nginx
