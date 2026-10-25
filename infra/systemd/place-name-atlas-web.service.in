@@ -1,0 +1,26 @@
+[Unit]
+Description=Ortsnamenatlas frontend
+After=network.target place-name-atlas-api.service
+StartLimitIntervalSec=60
+StartLimitBurst=6
+
+[Service]
+Type=exec
+User=@USER@
+WorkingDirectory=@WORKDIR@
+EnvironmentFile=@ENVFILE@
+UnsetEnvironment=DATABASE_URL IMPORT_DATABASE_URL MIGRATION_DATABASE_URL POSTGRES_PASSWORD RUNTIME_PASSWORD IMPORT_PASSWORD
+# Explicit bindings override any unrelated PORT/HOST entries in .env.
+ExecStart=/usr/bin/env NODE_ENV=production @HOST@ @NITRO_HOST@ @PORT@ @NITRO_PORT@ @NODE@ --max-http-header-size=65536 @WEB_ENTRY@
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+UMask=0027
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=place-name-atlas-web
+
+[Install]
+WantedBy=multi-user.target

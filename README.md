@@ -4,7 +4,7 @@ Ein selbst hostbarer Ortsnamenatlas für OK Lab Flensburg. Frei ergänzbare lite
 
 Stack: nginx · PostgreSQL/PostGIS · Python/FastAPI/Pydantic v2/SQLModel · Nuxt 4/Nuxt UI/SVG (Detailkarte: MapLibre) · uv/pnpm · Docker Compose. Quellen: **VG25 für Grenzen, VG250-EW für Einwohnerzahlen und GN250 für Ortsnamen**.
 
-**Deployment:** Die vollständige [Server-Anleitung](docs/deployment.md) beschreibt Docker Compose, eigene Zugangsdaten, BKG-Import, HTTPS mit Caddy, Updates, Monitoring, Backups und Wiederherstellung. Der Quellcode liegt unter [oklabflensburg/place-name-atlas](https://github.com/oklabflensburg/place-name-atlas).
+**Deployment:** Für einen vorhandenen Server mit nginx und PostgreSQL: [Frontend und Backend mit systemd](docs/systemd.md). Die [Compose-Anleitung](docs/deployment.md) beschreibt Docker Compose, eigene Zugangsdaten, BKG-Import, HTTPS mit Caddy, Updates, Monitoring, Backups und Wiederherstellung. Der Quellcode liegt unter [oklabflensburg/place-name-atlas](https://github.com/oklabflensburg/place-name-atlas).
 
 Tatsächlich lokal freigeschaltet: **45.858 GN250-Ortsobjekte**, VG25 und VG250-EW zum **31.12.2024**, 10.956 eindeutig verknüpfte Gemeinde-Einwohnerwerte. GN250 ist eine maßstabsbezogene Auswahl, keine vollständige Ortsteilliste. 17 Quellen-/Lagekonflikte bleiben ausdrücklich ohne Gemeindezuordnung. [Abnahme und Grenzen](docs/test-results.md).
 

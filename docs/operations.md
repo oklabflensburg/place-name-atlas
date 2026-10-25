@@ -2,6 +2,8 @@
 
 Voraussetzungen: Docker Engine mit Compose v2 oder Python 3.13, uv 0.12.5, Node 22.22.1+, pnpm 12.14.0, PostgreSQL 18 mit PostGIS 3.6 und GDAL. Versionen/Hashes stehen in Lockfiles und Dockerfiles. Containerbasen sind mit überprüften Registry-Digests fixiert; Updates müssen bewusst geprüft werden.
 
+Für den dauerhaften Betrieb ohne Container auf einem Server mit bestehendem nginx und PostgreSQL: [systemd-Anleitung für Frontend und Backend](systemd.md). Die folgenden Entwicklungs-/Vorschauhelfer sind für den lokalen Stack vorgesehen.
+
 ## Compose
 
 ```sh

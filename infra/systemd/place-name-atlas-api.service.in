@@ -1,0 +1,25 @@
+[Unit]
+Description=Ortsnamenatlas API
+After=network.target postgresql.service
+StartLimitIntervalSec=60
+StartLimitBurst=6
+
+[Service]
+Type=exec
+User=@USER@
+WorkingDirectory=@WORKDIR@
+EnvironmentFile=@ENVFILE@
+# Set the module path after EnvironmentFile, retaining its database settings.
+ExecStart=/usr/bin/env @PYTHONPATH@ PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 @PYTHON@ @API_SCRIPT@
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+UMask=0027
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=place-name-atlas-api
+
+[Install]
+WantedBy=multi-user.target
