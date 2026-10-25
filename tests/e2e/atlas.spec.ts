@@ -98,7 +98,9 @@ test('loading, zero hits, no data, API failure and retry are distinct',async({pa
   await expect(page.locator('.card-error').first()).toContainText('Testausfall')
   await expect(page.locator('.ending-card').first()).toContainText('Daten nicht geladen')
   await expect(page.locator('.ending-card').first()).not.toContainText('Keine passenden Orte')
-  await page.unroute('**/api/v1/grid/counts?*');for(const button of await page.locator('.card-error button').all())await button.click();await ready(page)
+  await page.unroute('**/api/v1/grid/counts?*')
+  for(const card of await page.locator('.ending-card').all())await card.getByRole('button',{name:'Erneut versuchen',exact:true}).click()
+  await ready(page)
   await page.getByRole('button',{name:'Zellwerte für -neverexists öffnen'}).click()
   const select=page.getByLabel('Zelle auswählen')
   const noData=await page.locator('.ending-card').first().locator('[data-denominator="0"]').first().getAttribute('data-cell')
@@ -124,6 +126,7 @@ test('unavailable dataset and missing publication are explicit',async({page})=>{
   await page.goto('/');await ready(page)
   const s=JSON.parse(new URL(page.url()).searchParams.get('s')!);s.dataset='unavailable-v0'
   await page.goto('/?s='+encodeURIComponent(JSON.stringify(s)))
+  await expect(page.getByRole('alert')).toHaveCount(1)
   await expect(page.getByRole('alert')).toContainText('nicht verfügbar')
   await expect(page.locator('.ending-card')).toHaveCount(10)
   await page.route('**/api/v1/datasets',r=>r.fulfill({contentType:'application/json',body:'[]'}))
