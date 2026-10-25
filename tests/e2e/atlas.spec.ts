@@ -140,7 +140,7 @@ test('overview and method page accessibility',async({page})=>{
   expect((await new AxeBuilder({page}).analyze()).violations).toEqual([])
 })
 
-test('free ending actions preserve existing cards, reuse data and share twenty cards',async({page})=>{
+test('free ending actions preserve existing cards, reuse data and share twenty cards',async({page,context})=>{
   await page.goto('/');await ready(page)
   const loaded=()=>expect(page.locator('#overview')).toHaveAttribute('data-loaded','true')
   const requests:string[]=[]
@@ -166,8 +166,13 @@ test('free ending actions preserve existing cards, reuse data and share twenty c
     await page.getByLabel('Endung hinzufügen',{exact:true}).fill(value);await page.getByLabel('Endung hinzufügen',{exact:true}).press('Enter')
   }
   await loaded();await expect(page.locator('.ending-card')).toHaveCount(20)
-  const order=await page.locator('.ending-card h2').allTextContents(),url=page.url()
-  await page.goto(url);await loaded();await expect(page.locator('.ending-card h2')).toHaveText(order)
+  const order=await page.locator('.ending-card h2').allTextContents()
+  // Data readiness and the asynchronous router.replace calls settle separately.
+  // Verify the complete shared state before leaving the page that created it.
+  await expect.poll(()=>JSON.parse(new URL(page.url()).searchParams.get('s')||'{}').endings).toEqual(order.map(ending=>ending.slice(1)))
+  const url=page.url()
+  await page.close();page=await context.newPage()
+  await page.goto(url,{waitUntil:'domcontentloaded'});await loaded();await expect(page.locator('.ending-card h2')).toHaveText(order)
   await page.getByLabel('Endung -bek ändern',{exact:true}).click();await page.locator('.ending-editor input').fill('neverexists')
   await page.getByRole('button',{name:'Übernehmen',exact:true}).click();await loaded()
   await expect(page.locator('[data-ending=neverexists]')).toContainText('Keine passenden Orte')

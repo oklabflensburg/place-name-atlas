@@ -47,12 +47,14 @@ Vorgesehener Einstieg für Entwicklung und Vorschau: **http://127.0.0.1:8080**. 
 export PYTHONPATH=apps/api
 uv run python -m atlas.cli inspect data/vg25.zip
 uv run python -m atlas.cli prepare-bkg data/manifest.json data/bkg-2024.json
+uv run python -m atlas.cli inspect data/bkg-2024.json
 uv run python -m atlas.cli import data/bkg-2024.json
-uv run python -m atlas.cli report bkg-2024
-uv run python -m atlas.cli publish bkg-2024
+# Kennung aus inspect übernehmen; der Dateiname bestimmt sie nicht.
+uv run python -m atlas.cli report DATENKENNUNG
+uv run python -m atlas.cli publish DATENKENNUNG
 ```
 
-Bezugsadressen, Stichtage, Prüfsummen und Manifest: [Datenquellen](docs/data-sources.md). Pipeline, Freischaltung und Fehlerverhalten: [Importpipeline](docs/import-pipeline.md). Große Daten werden ausschließlich lokal unter ignoriertem `data/` abgelegt.
+Bezugsadressen, Stichtage, Prüfsummen und Manifest: [Datenquellen](docs/data-sources.md). Pipeline, Freischaltung, Streaming und Speichergrenzen: [Importpipeline](docs/import-pipeline.md). Der Import vorhandener Bundles streamt; `prepare-bkg` sammelt weiterhin den vollständigen Bestand im RAM. Große Daten werden ausschließlich lokal unter ignoriertem `data/` abgelegt.
 
 ## Prüfen
 
