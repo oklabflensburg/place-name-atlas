@@ -148,6 +148,17 @@
       "passed_scenarios": 11,
       "result": "reports/import-sql-offline.json",
       "scope": "Actual staging/area/population SQL in a new postgres --single cluster; driver/cursors/place import/publication untested"
+    },
+    "github_actions": {
+      "job_url": "https://github.com/oklabflensburg/place-name-atlas/actions/runs/40202034998/job/121195043836",
+      "commit": "8e3810ea0376933bb7f08f9f97257b42d685c031",
+      "locked_dependency_installation": "passed",
+      "backend_command": "pnpm test:e2e --backend",
+      "backend_passed": 87,
+      "backend_skipped": 2,
+      "backend_scope": "Regular SQLAlchemy/PostGIS fixture integration including atomic rollback, server cursors, idempotency and fingerprint checks",
+      "overall_job": "failed later in mobile browser URL restoration test",
+      "full_real_import_executed": false
     }
   },
   "limitations": [
