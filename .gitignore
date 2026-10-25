@@ -1,0 +1,59 @@
+# Local configuration and credentials; examples remain versioned.
+.env
+.env.*
+!.env.example
+!.env.*.example
+.aws/
+.codex/
+.agents/
+.direnv/
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Dependencies and generated application output.
+.venv/
+venv/
+node_modules/
+.nuxt/
+.output/
+dist/
+build/
+*.tsbuildinfo
+
+# Source archives, generated datasets and database backups.
+/data/
+/backups/
+/artifacts/
+*.dump
+*.backup
+*.sql.gz
+*.sqlite
+*.sqlite3
+
+# Test output, caches and logs.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.cache/
+.coverage
+.coverage.*
+coverage/
+htmlcov/
+test-results/
+playwright-report/
+blob-report/
+*.log
+*.pid
+
+# Editor and operating-system files.
+.idea/
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
