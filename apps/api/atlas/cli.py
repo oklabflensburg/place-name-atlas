@@ -46,7 +46,10 @@ def main():
         print(json.dumps({"path":str(args.destination),"url":args.url,"sha256":checksum}))
     elif args.command=="inspect":
         import subprocess
-        if args.path.suffix==".gpkg":
+        if args.path.suffix.lower()==".json":
+            from atlas.bundle import inspect_bundle
+            print(json.dumps(inspect_bundle(args.path),ensure_ascii=False,indent=2))
+        elif args.path.suffix==".gpkg":
             subprocess.run(["ogrinfo","-so",str(args.path)],check=True)
         elif args.path.suffix.lower()==".csv":
             import csv

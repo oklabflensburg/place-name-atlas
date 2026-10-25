@@ -1,0 +1,104 @@
+{
+  "method": "Production staging/area/population helper SQL against postgres --single in a new disposable PostgreSQL 18.6/PostGIS cluster. No real SQLAlchemy driver/cursors or complete place import. Each scenario rolled back.",
+  "cases": [
+    {
+      "case": "synthetic",
+      "passed": true,
+      "actual": {
+        "areas": 4,
+        "total_population": 1234,
+        "missing": 1
+      },
+      "report": {
+        "invalid_geometries": 0,
+        "invalid_geometry_details": [],
+        "missing_population": 1,
+        "ambiguous_population": 0,
+        "population_unmatched": 0
+      }
+    },
+    {
+      "case": "bkg-flensburg",
+      "passed": true,
+      "actual": {
+        "areas": 3,
+        "total_population": 96326,
+        "missing": 0
+      },
+      "report": {
+        "invalid_geometries": 0,
+        "invalid_geometry_details": [],
+        "missing_population": 0,
+        "ambiguous_population": 0,
+        "population_unmatched": 0
+      }
+    },
+    {
+      "case": "interleaved",
+      "passed": true,
+      "actual": {
+        "areas": 4,
+        "total_population": 1234,
+        "missing": 1
+      },
+      "report": {
+        "invalid_geometries": 0,
+        "invalid_geometry_details": [],
+        "missing_population": 1,
+        "ambiguous_population": 0,
+        "population_unmatched": 0
+      }
+    },
+    {
+      "case": "fields-reversed",
+      "passed": true,
+      "actual": {
+        "areas": 4,
+        "total_population": 1234,
+        "missing": 1
+      },
+      "report": {
+        "invalid_geometries": 0,
+        "invalid_geometry_details": [],
+        "missing_population": 1,
+        "ambiguous_population": 0,
+        "population_unmatched": 0
+      }
+    },
+    {
+      "case": "inconsistent-name",
+      "expected_error": "Widersprüchliche Verwaltungseinheit municipality:01001001",
+      "passed": true
+    },
+    {
+      "case": "inconsistent-ars",
+      "expected_error": "Widersprüchliche Verwaltungseinheit municipality:01001001",
+      "passed": true
+    },
+    {
+      "case": "inconsistent-ibz",
+      "expected_error": "Widersprüchliche Verwaltungseinheit municipality:01001001",
+      "passed": true
+    },
+    {
+      "case": "inconsistent-ibz_type",
+      "expected_error": "Widersprüchliche Verwaltungseinheit municipality:01001001",
+      "passed": true
+    },
+    {
+      "case": "population-123.0",
+      "expected_error": "Ungültige Einwohnerzahl",
+      "passed": true
+    },
+    {
+      "case": "population--1",
+      "expected_error": "Ungültige Einwohnerzahl",
+      "passed": true
+    },
+    {
+      "case": "population-'123'",
+      "expected_error": "Ungültige Einwohnerzahl",
+      "passed": true
+    }
+  ]
+}

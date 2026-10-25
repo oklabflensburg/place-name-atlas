@@ -1,0 +1,160 @@
+{
+  "date": "2026-10-25",
+  "scope": "Complete JSON scan and checksum, NOT a complete database import",
+  "environment": {
+    "os": "Linux x86_64",
+    "host_ram_mib": 15330,
+    "python": "3.13.15",
+    "ijson": "3.4.0",
+    "backend": "yajl2 (ctypes, system YAJL)",
+    "dependency_installation": "Public unmodified v3.4.0 sources fetched via GitHub connector; PyPI wheel install blocked by network policy"
+  },
+  "real_bundle_cli": {
+    "file_bytes": 588969901,
+    "python_peak_rss_kib": 99552,
+    "wall_seconds": 101.75,
+    "command": "PYTHONPATH=apps/api /usr/bin/time -v .venv/bin/python -m atlas.cli inspect data/bkg-2024-r3.json",
+    "exit_code": 0,
+    "import_completed": false
+  },
+  "real_bundle_reader": {
+    "mode": "inspect",
+    "file": "data/bkg-2024-r3.json",
+    "file_bytes": 588969901,
+    "ijson_version": "3.4.0",
+    "ijson_backend": "yajl2",
+    "python_version": "3.13.15",
+    "import_completed": false,
+    "inspection": {
+      "dataset": {
+        "id": "bkg-2024-r3",
+        "label": "BKG · Deutschland · 2024",
+        "synthetic": false,
+        "scope": "Deutschland",
+        "geometry_date": "2024-12-31",
+        "population_date": "2024-12-31",
+        "gn_source": "gn-2024-056b27d0bcdf",
+        "vg_source": "vg25-2024-8f3dd2dc3fb9",
+        "ew_source": "ew-2024-51a31279653e"
+      },
+      "sha256": "1c33b9f40b917b14ab5adb71fcc15a83847039e19691ee3a9d7860de4217e412",
+      "rows": {
+        "places": 172403,
+        "areas": 11378,
+        "population": 11110
+      },
+      "file_checked": true
+    },
+    "duration_seconds": 98.322,
+    "python_peak_rss_kib": 54260,
+    "exit_code": 0,
+    "postgres_peak": null,
+    "postgres_sample_interval_seconds": 0.2,
+    "postgres_samples": 0,
+    "postgres_visibility_incomplete": false,
+    "postgres_rss_note": "RSS-Summe zählt gemeinsam genutzte Seiten mehrfach; PSS ist anteilig, Stichproben können kurze Spitzen verpassen."
+  },
+  "synthetic_readers": [
+    {
+      "mode": "inspect",
+      "file": "generated-small.json",
+      "file_bytes": 5635754,
+      "ijson_version": "3.4.0",
+      "ijson_backend": "yajl2",
+      "python_version": "3.13.15",
+      "import_completed": false,
+      "inspection": {
+        "dataset": {
+          "id": "load-20-600-20000",
+          "label": "Synthetischer Importlasttest",
+          "synthetic": true,
+          "scope": "Synthetische Sonderfälle",
+          "geometry_date": "2024-12-31",
+          "population_date": "2024-12-31",
+          "gn_source": "synthetic-GN250",
+          "vg_source": "synthetic-VG25",
+          "ew_source": "synthetic-VG250-EW"
+        },
+        "sha256": "f8567471db35c2fffcae389d32903658a2d9598cfc05c2f438891a61cd6285dc",
+        "rows": {
+          "places": 20000,
+          "areas": 42,
+          "population": 40
+        },
+        "file_checked": true
+      },
+      "duration_seconds": 0.94,
+      "python_peak_rss_kib": 23548,
+      "exit_code": 0,
+      "postgres_peak": null,
+      "postgres_sample_interval_seconds": 0.2,
+      "postgres_samples": 0,
+      "postgres_visibility_incomplete": false,
+      "postgres_rss_note": "RSS-Summe zählt gemeinsam genutzte Seiten mehrfach; PSS ist anteilig, Stichproben können kurze Spitzen verpassen."
+    },
+    {
+      "mode": "inspect",
+      "file": "generated-large.json",
+      "file_bytes": 78089991,
+      "ijson_version": "3.4.0",
+      "ijson_backend": "yajl2",
+      "python_version": "3.13.15",
+      "import_completed": false,
+      "inspection": {
+        "dataset": {
+          "id": "load-1600-600-20000",
+          "label": "Synthetischer Importlasttest",
+          "synthetic": true,
+          "scope": "Synthetische Sonderfälle",
+          "geometry_date": "2024-12-31",
+          "population_date": "2024-12-31",
+          "gn_source": "synthetic-GN250",
+          "vg_source": "synthetic-VG25",
+          "ew_source": "synthetic-VG250-EW"
+        },
+        "sha256": "2279d01ca1117e692c5fc4503c4b354a93bc6b2f27815b6af3ae0dbd513394cc",
+        "rows": {
+          "places": 20000,
+          "areas": 3202,
+          "population": 3200
+        },
+        "file_checked": true
+      },
+      "duration_seconds": 12.487,
+      "python_peak_rss_kib": 25048,
+      "exit_code": 0,
+      "postgres_peak": null,
+      "postgres_sample_interval_seconds": 0.2,
+      "postgres_samples": 0,
+      "postgres_visibility_incomplete": false,
+      "postgres_rss_note": "RSS-Summe zählt gemeinsam genutzte Seiten mehrfach; PSS ist anteilig, Stichproben können kurze Spitzen verpassen."
+    }
+  ],
+  "independent_sha256sum": "1c33b9f40b917b14ab5adb71fcc15a83847039e19691ee3a9d7860de4217e412",
+  "database_import": {
+    "executed": false,
+    "postgres_peak": null,
+    "reason": "Unix socket connections to newly created isolated PostgreSQL 18 test cluster denied: Operation not permitted. Escalation unavailable under managed approval policy."
+  },
+  "checks": {
+    "pytest_command": ".venv/bin/python -m pytest -q",
+    "pytest_passed": 52,
+    "pytest_skipped": 37,
+    "separate_postgis_attempt": "Blocked at fixture connection setup (OperationalError), no integration assertions executed",
+    "lockfile_command": "UV_CACHE_DIR=/tmp/atlas-import-uv-cache uv lock --check --offline",
+    "lockfile_exit_code": 0,
+    "offline_postgis_sql": {
+      "command": ".venv/bin/python scripts/check-import-sql-offline.py --output docs/reports/import-sql-offline.json",
+      "passed_scenarios": 11,
+      "result": "reports/import-sql-offline.json",
+      "scope": "Actual staging/area/population SQL in a new postgres --single cluster; driver/cursors/place import/publication untested"
+    }
+  },
+  "limitations": [
+    "512 MiB target for complete import not verified",
+    "No PostgreSQL load, GEOS peak or temp/WAL disk measurement",
+    "Largest individual feature still bounds Python memory; metadata/report arrays stay in memory",
+    "prepare-bkg remains memory intensive",
+    "PyPI C extension backend not measured"
+  ]
+}
