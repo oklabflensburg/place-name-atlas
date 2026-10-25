@@ -1,0 +1,187 @@
+{
+  "execution": "postgres --single, isolated temporary cluster, no HTTP/browser tests",
+  "synthetic": {
+    "dataset": "synthetic-v1",
+    "places": 19,
+    "totals": [
+      4,
+      1,
+      0,
+      2,
+      1,
+      1,
+      2,
+      0,
+      0,
+      2
+    ],
+    "occupied_cells": 9,
+    "geometry_cells": 96,
+    "cell_distribution": {
+      "minimum": 1,
+      "quartiles": [
+        2,
+        2,
+        2
+      ],
+      "maximum": 3,
+      "below_ten": 9
+    },
+    "values_cold_ms": 56.2,
+    "geometry_cold_ms": 75.2,
+    "geometry_bytes": 4961,
+    "values_bytes": 765,
+    "checks": [
+      "production PostGIS SQL",
+      "every cell numerator and denominator against Python source oracle",
+      "all ten counts against Python source oracle",
+      "distinct objects with name variants",
+      "overlapping ach/bach",
+      "separate ing/ingen",
+      "region and kind denominator",
+      "zero versus no data, including all ten maps with zero hits",
+      "cell names and pagination",
+      "metric grid, identical circle centers and source coverage",
+      "finite metric viewBox encloses every full circle",
+      "explicit suffix variants count each place once"
+    ]
+  },
+  "real": {
+    "dataset": "bkg-2024-r3",
+    "places": 45858,
+    "totals": [
+      3218,
+      1342,
+      153,
+      1323,
+      2088,
+      3933,
+      2711,
+      1256,
+      916,
+      60
+    ],
+    "occupied_cells": 1006,
+    "geometry_cells": 1062,
+    "cell_distribution": {
+      "minimum": 1,
+      "quartiles": [
+        32,
+        45,
+        58
+      ],
+      "maximum": 126,
+      "below_ten": 66
+    },
+    "values_cold_ms": 1656.9,
+    "geometry_cold_ms": 277.1,
+    "geometry_bytes": 51326,
+    "values_bytes": 66046,
+    "checks": [
+      "production PostGIS SQL",
+      "every cell numerator and denominator against Python source oracle",
+      "all ten counts against Python source oracle",
+      "distinct objects with name variants",
+      "overlapping ach/bach",
+      "separate ing/ingen",
+      "region and kind denominator",
+      "zero versus no data, including all ten maps with zero hits",
+      "cell names and pagination",
+      "metric grid, identical circle centers and source coverage",
+      "finite metric viewBox encloses every full circle",
+      "explicit suffix variants count each place once"
+    ]
+  },
+  "ratio_10_of_40": {
+    "dataset": "ratio-40",
+    "places": 40,
+    "totals": [
+      0,
+      0,
+      0,
+      10,
+      0,
+      30,
+      0,
+      0,
+      0,
+      0
+    ],
+    "occupied_cells": 1,
+    "geometry_cells": 96,
+    "cell_distribution": {
+      "minimum": 40,
+      "quartiles": [
+        40,
+        40,
+        40
+      ],
+      "maximum": 40,
+      "below_ten": 0
+    },
+    "values_cold_ms": 57.0,
+    "geometry_cold_ms": 77.9,
+    "geometry_bytes": 4957,
+    "values_bytes": 254,
+    "checks": [
+      "production PostGIS SQL",
+      "every cell numerator and denominator against Python source oracle",
+      "all ten counts against Python source oracle",
+      "distinct objects with name variants",
+      "overlapping ach/bach",
+      "separate ing/ingen",
+      "region and kind denominator",
+      "zero versus no data, including all ten maps with zero hits",
+      "cell names and pagination",
+      "metric grid, identical circle centers and source coverage",
+      "finite metric viewBox encloses every full circle",
+      "explicit suffix variants count each place once"
+    ]
+  },
+  "single_place_extreme": {
+    "dataset": "single-place",
+    "places": 1,
+    "totals": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "occupied_cells": 1,
+    "geometry_cells": 96,
+    "cell_distribution": {
+      "minimum": 1,
+      "quartiles": [
+        1,
+        1,
+        1
+      ],
+      "maximum": 1,
+      "below_ten": 1
+    },
+    "values_cold_ms": 56.1,
+    "geometry_cold_ms": 77.0,
+    "geometry_bytes": 4961,
+    "values_bytes": 252,
+    "checks": [
+      "production PostGIS SQL",
+      "every cell numerator and denominator against Python source oracle",
+      "all ten counts against Python source oracle",
+      "distinct objects with name variants",
+      "overlapping ach/bach",
+      "separate ing/ingen",
+      "region and kind denominator",
+      "zero versus no data, including all ten maps with zero hits",
+      "cell names and pagination",
+      "metric grid, identical circle centers and source coverage",
+      "finite metric viewBox encloses every full circle",
+      "explicit suffix variants count each place once"
+    ]
+  }
+}

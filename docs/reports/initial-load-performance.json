@@ -1,0 +1,141 @@
+{
+  "method": "Compare stored display boundaries with the previous on-demand expression.\n\nUses real VG25 state boundaries in a disposable postgres --single cluster. Each\nsample includes process startup, SQL and decoding, with an empty application\ncache and uncontrolled OS caches. These are not HTTP or browser timings.\n",
+  "cases": {
+    "germany": {
+      "before": {
+        "ms": [
+          1098.9981360003185,
+          1103.140618999987,
+          1114.648777000184,
+          1081.8153650002387,
+          1112.67408599997
+        ],
+        "median_ms": 1103.140618999987
+      },
+      "after": {
+        "ms": [
+          292.88559899987376,
+          277.50077500013504,
+          267.84480600008465,
+          302.72266900010436,
+          276.4315459999125
+        ],
+        "median_ms": 277.50077500013504
+      },
+      "cells": 1062,
+      "bytes": 51326,
+      "identical_response": true
+    },
+    "schleswig-holstein": {
+      "before": {
+        "ms": [
+          130.62128000001394,
+          130.44475700007752,
+          140.73479499984387,
+          131.86100399980205,
+          133.1011069996748
+        ],
+        "median_ms": 131.86100399980205
+      },
+      "after": {
+        "ms": [
+          76.9274869999208,
+          77.25749600012932,
+          74.04696799994781,
+          76.22144199967806,
+          75.79875199962771
+        ],
+        "median_ms": 76.22144199967806
+      },
+      "cells": 90,
+      "bytes": 4672,
+      "identical_response": true
+    },
+    "two-states": {
+      "before": {
+        "ms": [
+          139.97121400007018,
+          136.64554100023452,
+          136.46442900017064,
+          141.03275900015433,
+          134.39322199974413
+        ],
+        "median_ms": 136.64554100023452
+      },
+      "after": {
+        "ms": [
+          77.89555499994094,
+          82.71791600009237,
+          75.67401400001472,
+          75.3988470000877,
+          77.57205899997643
+        ],
+        "median_ms": 77.57205899997643
+      },
+      "cells": 92,
+      "bytes": 4768,
+      "identical_response": true
+    },
+    "bbox": {
+      "before": {
+        "ms": [
+          968.8450759999796,
+          990.1262660000612,
+          944.2275229998813,
+          971.5943360001802,
+          966.9163799999296
+        ],
+        "median_ms": 968.8450759999796
+      },
+      "after": {
+        "ms": [
+          151.6666909997184,
+          144.6864560002723,
+          144.95139299970106,
+          158.2890419999785,
+          151.0629859999426
+        ],
+        "median_ms": 151.0629859999426
+      },
+      "cells": 63,
+      "bytes": 3361,
+      "identical_response": true
+    },
+    "state-and-bbox": {
+      "before": {
+        "ms": [
+          134.60453100015002,
+          126.54386100030024,
+          124.2922000001272,
+          129.21658000004754,
+          129.02154299990798
+        ],
+        "median_ms": 129.02154299990798
+      },
+      "after": {
+        "ms": [
+          106.44834000004266,
+          106.3245889999962,
+          107.37403700022696,
+          111.90486499981489,
+          108.43189600018377
+        ],
+        "median_ms": 107.37403700022696
+      },
+      "cells": 35,
+      "bytes": 2017,
+      "identical_response": true
+    }
+  },
+  "generated_column_tracks_updates": true,
+  "region_choices": {
+    "all": 11372,
+    "overview": 416,
+    "levels": {
+      "state": 16,
+      "district": 400,
+      "municipality": 10956
+    }
+  },
+  "migration_round_trip": true
+}

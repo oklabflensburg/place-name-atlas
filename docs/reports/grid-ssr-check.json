@@ -1,0 +1,16 @@
+{
+  "execution": "Production Nuxt SSR through localFetch with the listener replaced by a no-op, no network or browser",
+  "index": 200,
+  "serverRenderedCards": 10,
+  "defaultEndings": 10,
+  "method": 200,
+  "tenCardsBeforeHydration": true,
+  "colorModesInInitialHTML": 2,
+  "webHealthIdentity": 200,
+  "combinedToolbar": 1,
+  "inlineSuggestions": 4,
+  "compactToolbarOrder": true,
+  "compactCardActions": true,
+  "emptyVariantRows": false,
+  "visibleResetLabel": "Zurücksetzen"
+}

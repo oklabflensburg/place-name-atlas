@@ -1,0 +1,111 @@
+{
+  "task": "Compact shared overview toolbar",
+  "date": "2026-10-22",
+  "sources": {
+    "apps/web/app/pages/index.vue": "ea74b69ff71541bf84988bcf7f1a62feda79ca4fa5b0019dd1968becb915231a",
+    "apps/web/app/components/OverviewToolbar.vue": "ffe4e4cab18ca9618d587af307d5ac53a7f45e5fa9dd9c7ad0814b90a56fae74",
+    "apps/web/app/components/OverviewFilters.vue": "d74b35f8c33417deb3a7a99aeadebf683a1b13b033ab01456be8927d0db8241e",
+    "apps/web/app/assets/main.css": "55d947d5a7677ccbfb50e06e71f088a547d2dd1de8fdf1e5e830a997a16fbabe",
+    "apps/web/nuxt.config.ts": "0cd9537fb961ae24855c4dc66c460f3bf8410d4884ffbaea086e7cdfd9570361",
+    "apps/web/app/components/EndingCard.vue": "f2eb306cff56846050e577147255e29279216243e9b5cc7016fecd4eb287a270"
+  },
+  "implementation": {
+    "shared_state": "Existing page-owned OverviewState and existing event handlers; no filter-state copy",
+    "desktop": "Two rows: ending input + button, region, kind, mode, additional-filter popover; suggestions + dataset + card count + reset + share",
+    "mobile": "Same model in Nuxt UI modal; hidden desktop fields are display:none; three featured suggestions and More",
+    "icons": "Ten local SVG icons through Nuxt UI / Nuxt Icon, explicitly bundled; 2.05 KB uncompressed. Select chevrons use the same local SVG asset.",
+    "reset": "Visible label Zurücksetzen as in the reference; accessible name, description and tooltip explicitly state that only standard endings are restored.",
+    "data_path": "No changes to API, loader, cache, normalization or URL schema. SVG geometry, circle coordinates/radii, counts and numeric scales are unchanged.",
+    "sharing": "Existing URL synchronization; clipboard failures are now explicit errors; URL-length checks retained, permanent technical hint removed",
+    "mockup_refinement": {
+      "reference_size_px": [
+        1536,
+        1024
+      ],
+      "layout": "Centered header navigation, 72px header, approximately 47px main insets at reference width; 5-column map grid with 12px gaps.",
+      "toolbar": "Column proportions follow the reference; 44px primary controls; four suggestion pills, a discreet More menu, metadata from dataset label/year, short Reset and Share actions.",
+      "legend": "Short Methodik label and decorative existing color ramp. The exact numeric ranges remain under each card; zero and no-data states remain distinct.",
+      "cards": "Removed empty variant rows; reorder controls remain available inside the editor; local pencil/close/info/share SVG icons.",
+      "visual_comparison_completed": false
+    }
+  },
+  "verification": {
+    "vitest": {
+      "passed": 41,
+      "skipped": 1
+    },
+    "typecheck": "passed",
+    "production_build": "passed",
+    "production_ssr": {
+      "execution": "Production Nuxt SSR through localFetch with the listener replaced by a no-op, no network or browser",
+      "index": 200,
+      "serverRenderedCards": 10,
+      "defaultEndings": 10,
+      "method": 200,
+      "tenCardsBeforeHydration": true,
+      "colorModesInInitialHTML": 2,
+      "webHealthIdentity": 200,
+      "combinedToolbar": 1,
+      "inlineSuggestions": 4,
+      "compactToolbarOrder": true,
+      "compactCardActions": true,
+      "emptyVariantRows": false,
+      "visibleResetLabel": "Zurücksetzen"
+    },
+    "playwright_listing": {
+      "synthetic": 14,
+      "real": 16,
+      "executed": false
+    },
+    "project_start": {
+      "command": "pnpm preview:local",
+      "exit_code": 1,
+      "output": "$ node scripts/preview.mjs\nPort 8000 kann nicht geprüft werden: EPERM. Keine Dienste gestartet.\n[ELIFECYCLE] Command failed with exit code 1.\n"
+    },
+    "nginx_browser_attempt": {
+      "command": "pnpm exec playwright test --config playwright.real.config.ts tests/real-e2e/toolbar.spec.ts --project desktop",
+      "output": "Error: Process from config.webServer was not able to start. Exit code: 1\n\n"
+    },
+    "chromium_launch": "FATAL content/browser/sandbox_host_linux.cc:41 shutdown: Operation not permitted",
+    "network_panel": "Not available: localhost socket operations are denied with EPERM",
+    "contrast_ratios": {
+      "form_text_on_paper": 11.88,
+      "muted_text_on_sage": 5.41,
+      "placeholder_on_paper": 4.71,
+      "primary_button_text": 6.3,
+      "input_border_on_paper": 3.48,
+      "input_border_on_sage": 3.08
+    },
+    "chromium_fallback": "Also fails with --no-zygote --single-process --disable-gpu: same sandbox_host_linux.cc shutdown EPERM."
+  },
+  "height": {
+    "viewport_px": 1440,
+    "before_measured_px": null,
+    "after_measured_px": null,
+    "desktop_toolbar_css_target_px": 163,
+    "note": "CSS design target only, not a browser measurement; excludes legend and feedback messages. The mockup itself is about 162px high. Same-width measured before/after heights remain unavailable because project sockets are denied.",
+    "baseline_sources": {
+      "/tmp/atlas-toolbar-before/main.css": "58c39ddc6ecbbdf3c37c0f27251816d67d730020a4ec0f92b0127519066069a0",
+      "/tmp/atlas-toolbar-before/index.vue": "5e404710f5e655cd2e4c2fc1dee7b696d78a3f0456648e50a14827c50ca04706"
+    }
+  },
+  "screenshots": {
+    "created": false,
+    "planned": [
+      "artifacts/compact-toolbar-reference.png",
+      "artifacts/compact-toolbar-desktop.png",
+      "artifacts/compact-toolbar-mobile.png",
+      "artifacts/compact-toolbar-1024.png",
+      "artifacts/compact-toolbar-768.png",
+      "artifacts/compact-toolbar-200percent-reflow.png"
+    ]
+  },
+  "open_checks": [
+    "Actual browser screenshots and visual comparison to mockup",
+    "Actual heights before and after at the same viewport",
+    "Interactive validation at 1440, 1024, 768 and 390 px",
+    "Real browser-chrome 200% zoom (prepared 720 CSS-px/DPR-2 reflow check is not the same test)",
+    "Network-panel verification of unchanged request counts",
+    "Keyboard/focus/overlay and sharing flows in browser"
+  ]
+}

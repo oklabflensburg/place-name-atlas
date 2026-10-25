@@ -1,0 +1,6 @@
+# Caddy runs on the host; replace this example hostname before installing.
+# The Compose nginx endpoint remains bound to host loopback.
+atlas.example.org {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:8080
+}

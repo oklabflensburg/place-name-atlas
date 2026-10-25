@@ -1,0 +1,31 @@
+{
+  "source": "https://daten.gdz.bkg.bund.de/produkte/sonstige/gn250/2024/gn250.utm32s.csv.zip",
+  "archive_sha256": "056b27d0bcdff4f176836ee4912126f46ecf25adb114c730f8205da7fc45fc12",
+  "manifest": "data/manifest-r3.json",
+  "all_source_rows": 172403,
+  "ortslage_rows": 46824,
+  "virtual_excluded": 966,
+  "invalid_name_excluded": 0,
+  "accepted": 45858,
+  "unique_NNID": 45858,
+  "GEMTEIL": {
+    "Ja": 36068,
+    "Nein": 9790
+  },
+  "with_alternative_name": 1238,
+  "municipality_subset": [],
+  "AX_Gemeinde_not_counted_as_settlement": 10956,
+  "suffix_counts": {
+    "ach": 3218,
+    "ingen": 1342,
+    "zell": 153,
+    "heim": 1323,
+    "hausen": 2088,
+    "dorf": 3933,
+    "bach": 2711,
+    "itz": 1256,
+    "ow": 916,
+    "by": 60
+  },
+  "conclusion": "9790 equals GEMTEIL=Nein; default must also include 36068 GEMTEIL=Ja. No source subset or invented objects. NNID identities, never merge by name."
+}

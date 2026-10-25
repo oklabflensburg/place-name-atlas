@@ -1,0 +1,26 @@
+{
+  "dataset": "bkg-2024-r3",
+  "fingerprint": "1c33b9f40b917b14ab5adb71fcc15a83847039e19691ee3a9d7860de4217e412",
+  "geometry_date": "2024-12-31",
+  "population_date": "2024-12-31",
+  "places": 45858,
+  "areas": {
+    "district": 400,
+    "municipality": 10956,
+    "state": 16
+  },
+  "kinds": {
+    "district": 36068,
+    "settlement": 9790
+  },
+  "assignments": {
+    "source_confirmed": 45841,
+    "source_spatial_conflict": 17
+  },
+  "population": {
+    "units": 10956,
+    "known_values": 10956,
+    "total": 83577140
+  },
+  "source_population_count_and_total_verified": true
+}

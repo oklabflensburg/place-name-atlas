@@ -1,0 +1,77 @@
+{
+  "at": "2026-10-21T19:33:02.797Z",
+  "project": "/home/awendelk/git/ortsnamenatlas",
+  "visibility": "Only the current /proc and network namespace; an empty list does not prove the host is free.",
+  "ports": [
+    8000,
+    3000,
+    8080,
+    3001
+  ],
+  "listeners": [],
+  "processes": [],
+  "health": [
+    {
+      "url": "http://127.0.0.1:8000/health/live",
+      "error": "fetch failed",
+      "cause": "EPERM"
+    },
+    {
+      "url": "http://127.0.0.1:8000/health/ready",
+      "error": "fetch failed",
+      "cause": "EPERM"
+    },
+    {
+      "url": "http://127.0.0.1:8000/health/instance",
+      "error": "fetch failed",
+      "cause": "EPERM"
+    },
+    {
+      "url": "http://127.0.0.1:3000/health/web",
+      "error": "fetch failed",
+      "cause": "EPERM"
+    },
+    {
+      "url": "http://127.0.0.1:8080/health/proxy",
+      "error": "fetch failed",
+      "cause": "EPERM"
+    },
+    {
+      "url": "http://127.0.0.1:8080/health/instance",
+      "error": "fetch failed",
+      "cause": "EPERM"
+    },
+    {
+      "url": "http://127.0.0.1:8080/health/web",
+      "error": "fetch failed",
+      "cause": "EPERM"
+    },
+    {
+      "url": "http://127.0.0.1:8080/health/ready",
+      "error": "fetch failed",
+      "cause": "EPERM"
+    },
+    {
+      "url": "http://127.0.0.1:3001/health/web",
+      "error": "fetch failed",
+      "cause": "EPERM"
+    }
+  ],
+  "nginx": [
+    {
+      "file": "/tmp/ortsnamenatlas-a6ad02f827c44738/nginx/nginx.conf",
+      "configuration": "pid /tmp/ortsnamenatlas-a6ad02f827c44738/nginx/nginx.pid;\nerror_log /tmp/ortsnamenatlas-a6ad02f827c44738/nginx/error.log;\nevents {}\nhttp {\naccess_log off;\nclient_body_temp_path /tmp/ortsnamenatlas-a6ad02f827c44738/nginx/body;\nproxy_temp_path /tmp/ortsnamenatlas-a6ad02f827c44738/nginx/proxy;\nserver {\n    listen 127.0.0.1:8080;\n    server_name _;\n    server_tokens off;\n    client_max_body_size 32k;\n    client_header_buffer_size 4k;\n    large_client_header_buffers 4 64k;\n    add_header X-Content-Type-Options nosniff always;\n    add_header Referrer-Policy same-origin always;\n    add_header Permissions-Policy \"camera=(), microphone=(), geolocation=()\" always;\n    location = /health/proxy { default_type application/json; add_header Cache-Control no-store; return 200 '{\"service\":\"nginx\",\"project\":\"a6ad02f827c44738\",\"build\":\"6969707a89630b2e119c3e86cb3e43441622b7cfd9ab9945ffe9ef98391cd794\",\"api\":\"http://127.0.0.1:8000\",\"web\":\"http://127.0.0.1:3000\"}'; }\n    location /api/v1/ {\n        proxy_pass http://127.0.0.1:8000;\n        proxy_set_header Host $host;\n        proxy_set_header X-Forwarded-For \"\";\n        proxy_set_header X-Forwarded-Proto \"\";\n        proxy_read_timeout 20s;\n        proxy_buffering on;\n        proxy_cache off;\n    }\n    location = /health/web {\n        proxy_pass http://127.0.0.1:3000;\n        proxy_set_header Host $host;\n        proxy_set_header X-Forwarded-For \"\";\n        proxy_set_header X-Forwarded-Proto \"\";\n    }\n    location /health/ {\n        proxy_pass http://127.0.0.1:8000;\n        proxy_set_header X-Forwarded-For \"\";\n        proxy_set_header X-Forwarded-Proto \"\";\n    }\n    location / {\n        proxy_pass http://127.0.0.1:3000;\n        proxy_set_header Host $host;\n        proxy_set_header X-Forwarded-For \"\";\n        proxy_set_header X-Forwarded-Proto \"\";\n        proxy_http_version 1.1;\n        proxy_set_header Upgrade $http_upgrade;\n        proxy_set_header Connection \"upgrade\";\n    }\n}\n\n}",
+      "active": false,
+      "note": "Datei vorhanden; kein sichtbarer zugehöriger Prozess. Keine Aussage über aktive Upstreams."
+    },
+    {
+      "file": "/tmp/ortsnamenatlas-nginx/nginx.conf",
+      "configuration": "pid /tmp/ortsnamenatlas-nginx/nginx.pid;\nerror_log /tmp/ortsnamenatlas-nginx/error.log;\nevents {}\nhttp {\naccess_log off;\nclient_body_temp_path /tmp/ortsnamenatlas-nginx/body;\nproxy_temp_path /tmp/ortsnamenatlas-nginx/proxy;\nserver {\n    listen 127.0.0.1:8080;\n    server_name _;\n    server_tokens off;\n    client_max_body_size 32k;\n    client_header_buffer_size 4k;\n    large_client_header_buffers 4 64k;\n    add_header X-Content-Type-Options nosniff always;\n    add_header Referrer-Policy same-origin always;\n    add_header Permissions-Policy \"camera=(), microphone=(), geolocation=()\" always;\n    location /api/v1/ {\n        proxy_pass http://127.0.0.1:8000;\n        proxy_set_header Host $host;\n        proxy_set_header X-Forwarded-For \"\";\n        proxy_set_header X-Forwarded-Proto \"\";\n        proxy_read_timeout 20s;\n        proxy_buffering on;\n        proxy_cache off;\n    }\n    location /health/ {\n        proxy_pass http://127.0.0.1:8000;\n        proxy_set_header X-Forwarded-For \"\";\n        proxy_set_header X-Forwarded-Proto \"\";\n    }\n    location / {\n        proxy_pass http://127.0.0.1:3001;\n        proxy_set_header Host $host;\n        proxy_set_header X-Forwarded-For \"\";\n        proxy_set_header X-Forwarded-Proto \"\";\n        proxy_http_version 1.1;\n    }\n}\n\n}",
+      "active": false,
+      "note": "Datei vorhanden; kein sichtbarer zugehöriger Prozess. Keine Aussage über aktive Upstreams."
+    }
+  ],
+  "limitations": [
+    "ss: Cannot open netlink socket: Operation not permitted"
+  ]
+}

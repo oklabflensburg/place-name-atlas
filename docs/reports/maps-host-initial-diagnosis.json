@@ -1,0 +1,296 @@
+{
+  "source": "Host browser diagnosis provided by the user; original response retained in artifacts/maps-diagnosis.json",
+  "url": "http://127.0.0.1:8080",
+  "geometry": [
+    {
+      "status": 200,
+      "dataset": "bkg-2024-r3",
+      "grid": "laea-3035-square-20000-origin-0-v1",
+      "crs": "EPSG:3035",
+      "cell_size": 20000,
+      "viewbox": [
+        4011317.0535095204,
+        -3576568.668117665,
+        681187.1295134332,
+        912494.0015743244
+      ],
+      "cells": 1062,
+      "samples": [
+        {
+          "id": "216_134",
+          "cx": 4330000,
+          "cy": -2690000
+        },
+        {
+          "id": "217_134",
+          "cx": 4350000,
+          "cy": -2690000
+        },
+        {
+          "id": "219_134",
+          "cx": 4390000,
+          "cy": -2690000
+        }
+      ]
+    }
+  ],
+  "values": [
+    {
+      "status": 200,
+      "dataset": "bkg-2024-r3",
+      "grid": "laea-3035-square-20000-origin-0-v1",
+      "cells": 1006,
+      "denominator": 45858,
+      "totals": [
+        3218,
+        1342,
+        153,
+        1323,
+        2088,
+        3933,
+        2711,
+        1256,
+        916,
+        60
+      ],
+      "samples": [
+        {
+          "id": "216_134",
+          "denominator": 1,
+          "counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "217_134",
+          "denominator": 8,
+          "counts": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "207_135",
+          "denominator": 6,
+          "counts": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "desktop": [
+    {
+      "ending": "ach",
+      "circles": 1062,
+      "finite": 1062,
+      "inside": 1062,
+      "size": {
+        "x": 43,
+        "y": 517.375,
+        "width": 234,
+        "height": 313.453125
+      }
+    },
+    {
+      "ending": "ingen",
+      "circles": 1062,
+      "finite": 1062,
+      "inside": 1062,
+      "size": {
+        "x": 323,
+        "y": 517.375,
+        "width": 234,
+        "height": 313.453125
+      }
+    },
+    {
+      "ending": "zell",
+      "circles": 1062,
+      "finite": 1062,
+      "inside": 1062,
+      "size": {
+        "x": 603,
+        "y": 517.375,
+        "width": 234,
+        "height": 313.453125
+      }
+    },
+    {
+      "ending": "heim",
+      "circles": 1062,
+      "finite": 1062,
+      "inside": 1062,
+      "size": {
+        "x": 883,
+        "y": 517.375,
+        "width": 234,
+        "height": 313.453125
+      }
+    },
+    {
+      "ending": "hausen",
+      "circles": 1062,
+      "finite": 1062,
+      "inside": 1062,
+      "size": {
+        "x": 1163,
+        "y": 517.375,
+        "width": 234,
+        "height": 313.453125
+      }
+    },
+    {
+      "ending": "dorf",
+      "circles": 1062,
+      "finite": 1062,
+      "inside": 1062,
+      "size": {
+        "x": 43,
+        "y": 1063.828125,
+        "width": 234,
+        "height": 313.453125
+      }
+    },
+    {
+      "ending": "bach",
+      "circles": 1062,
+      "finite": 1062,
+      "inside": 1062,
+      "size": {
+        "x": 323,
+        "y": 1063.828125,
+        "width": 234,
+        "height": 313.453125
+      }
+    },
+    {
+      "ending": "itz",
+      "circles": 1062,
+      "finite": 1062,
+      "inside": 1062,
+      "size": {
+        "x": 603,
+        "y": 1063.828125,
+        "width": 234,
+        "height": 313.453125
+      }
+    },
+    {
+      "ending": "ow",
+      "circles": 1062,
+      "finite": 1062,
+      "inside": 1062,
+      "size": {
+        "x": 883,
+        "y": 1063.828125,
+        "width": 234,
+        "height": 313.453125
+      }
+    },
+    {
+      "ending": "by",
+      "circles": 1062,
+      "finite": 1062,
+      "inside": 1062,
+      "size": {
+        "x": 1163,
+        "y": 1063.828125,
+        "width": 234,
+        "height": 313.453125
+      }
+    }
+  ],
+  "paint": [
+    {
+      "ending": "ach",
+      "width": 234,
+      "height": 314,
+      "coloredPixels": 8421
+    },
+    {
+      "ending": "ingen",
+      "width": 234,
+      "height": 314,
+      "coloredPixels": 6073
+    },
+    {
+      "ending": "zell",
+      "width": 234,
+      "height": 314,
+      "coloredPixels": 1545
+    },
+    {
+      "ending": "heim",
+      "width": 234,
+      "height": 314,
+      "coloredPixels": 5715
+    },
+    {
+      "ending": "hausen",
+      "width": 234,
+      "height": 314,
+      "coloredPixels": 8389
+    },
+    {
+      "ending": "dorf",
+      "width": 234,
+      "height": 315,
+      "coloredPixels": 12918
+    },
+    {
+      "ending": "bach",
+      "width": 234,
+      "height": 315,
+      "coloredPixels": 8031
+    },
+    {
+      "ending": "itz",
+      "width": 234,
+      "height": 315,
+      "coloredPixels": 5064
+    },
+    {
+      "ending": "ow",
+      "width": 234,
+      "height": 315,
+      "coloredPixels": 2814
+    },
+    {
+      "ending": "by",
+      "width": 234,
+      "height": 315,
+      "coloredPixels": 213
+    }
+  ],
+  "console_errors": [],
+  "page_errors": [],
+  "mobile_note": "Measurement captured detached elements during an interrupted/remounted page. Screenshot shows loading placeholders. Not evidence of a persistent zero-size map. Follow-up waits for loading after resize and reload.",
+  "original_browser_followup": "User confirms circles visible in the originally affected browser tab after reload."
+}

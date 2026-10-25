@@ -1,0 +1,69 @@
+name: ortsnamenatlas
+services:
+  db:
+    image: postgis/postgis:18-3.6@sha256:b4466ea2ba7e3af54fcbba996d45325720f4b3ecb4f43f99b2f41367dc196f23
+    environment:
+      POSTGRES_USER: atlas_owner
+      POSTGRES_DB: atlas
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+      RUNTIME_PASSWORD: ${RUNTIME_PASSWORD:?Set RUNTIME_PASSWORD}
+      IMPORT_PASSWORD: ${IMPORT_PASSWORD:?Set IMPORT_PASSWORD}
+    volumes:
+      - atlas-db:/var/lib/postgresql
+      - ./db/init.sh:/docker-entrypoint-initdb.d/20-atlas.sh:ro
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U atlas_owner -d atlas"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  migrate:
+    build: {context: .., dockerfile: infra/api.Dockerfile}
+    environment:
+      MIGRATION_DATABASE_URL: postgresql+psycopg://atlas_owner:${POSTGRES_PASSWORD}@db:5432/atlas
+    command: [uv, run, --no-sync, alembic, upgrade, head]
+    depends_on: {db: {condition: service_healthy}}
+  api:
+    build: {context: .., dockerfile: infra/api.Dockerfile}
+    environment:
+      DATABASE_URL: postgresql+psycopg://atlas_runtime:${RUNTIME_PASSWORD}@db:5432/atlas
+      QUERY_TIMEOUT_MS: ${QUERY_TIMEOUT_MS:-10000}
+      EXPORT_LIMIT: ${EXPORT_LIMIT:-10000}
+      TILE_LIMIT_BYTES: ${TILE_LIMIT_BYTES:-2000000}
+    command: [uv, run, --no-sync, uvicorn, atlas.main:app, --host, 0.0.0.0, --port, "8000", --no-proxy-headers, --no-access-log, --h11-max-incomplete-event-size, "65536"]
+    depends_on: {migrate: {condition: service_completed_successfully}}
+    healthcheck:
+      test: [CMD, /app/.venv/bin/python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/live')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+  importer:
+    profiles: [tools]
+    build: {context: .., dockerfile: infra/api.Dockerfile}
+    environment:
+      IMPORT_DATABASE_URL: postgresql+psycopg://atlas_import:${IMPORT_PASSWORD}@db:5432/atlas
+    volumes: [../data:/data]
+    entrypoint: [uv, run, --no-sync, python, -m, atlas.cli]
+    depends_on: {migrate: {condition: service_completed_successfully}}
+  web:
+    build: {context: .., dockerfile: infra/web.Dockerfile}
+    environment:
+      HOST: 0.0.0.0
+      PORT: "3000"
+      NUXT_PUBLIC_BASEMAP_URL: ${NUXT_PUBLIC_BASEMAP_URL:-}
+      NUXT_PUBLIC_BASEMAP_ATTRIBUTION: ${NUXT_PUBLIC_BASEMAP_ATTRIBUTION:-}
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3000/methodik').then(r=>{if(!r.ok)process.exit(1)})"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+  nginx:
+    image: nginx:1.30.6-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5
+    ports: ["127.0.0.1:8080:8080"]
+    volumes: [./nginx.conf:/etc/nginx/conf.d/default.conf:ro]
+    depends_on: {api: {condition: service_healthy},web: {condition: service_healthy}}
+    restart: unless-stopped
+volumes:
+  atlas-db:

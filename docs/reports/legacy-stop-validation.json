@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-21T19:50:08.133Z",
+  "change": "pnpm local:stop now identifies known older project launches from current socket owners and ancestry, without a manager PID file",
+  "verification": {
+    "unitTests": 28,
+    "unitTestsStatus": "passed",
+    "cases": [
+      "old serve-real.py and built Nuxt on port 3001",
+      "single old preview manager for all child listeners",
+      "Nuxt dev parent and nginx wrapper lifecycle",
+      "nginx master SIGQUIT",
+      "foreign commands, cwd, argv decoys and other users refused",
+      "unreadable owners and missing start times refused",
+      "PM2 and named systemd service children not directly signaled",
+      "SSH daemon ancestor does not prevent stopping its independent project child",
+      "PID reuse, exec, uid and parent changes rechecked before signaling",
+      "only positive PID signals, no process-group or SIGKILL for old launches",
+      "unresponsive process produces error without force-killing"
+    ]
+  },
+  "hostAttempt": {
+    "command": "pnpm local:stop",
+    "status": "blocked by isolated process/network visibility",
+    "processesStopped": 0,
+    "logTail": [
+      "nginx /tmp/ortsnamenatlas-nginx/nginx.conf · Datei ohne zugeordneten sichtbaren Prozess · Upstreams: http://127.0.0.1:8000, http://127.0.0.1:3001",
+      "Diagnosegrenze: ss: Cannot open netlink socket: Operation not permitted",
+      "Kein Projektprozess sicher zugeordnet. Fremde Dienste bzw. Hostprozesse außerhalb der sichtbaren Umgebung wurden nicht beendet. Diesen Befehl im Hostterminal ausführen; pnpm local:status liefert die Diagnose.",
+      "[ELIFECYCLE] Command failed with exit code 1."
+    ]
+  },
+  "frontendBuildStillCurrent": true,
+  "managerLockLeft": false
+}

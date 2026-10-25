@@ -1,0 +1,26 @@
+{
+  "name": "@atlas/web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "NODE_OPTIONS=--max-http-header-size=65536 nuxt dev --host 127.0.0.1",
+    "build": "nuxt build",
+    "typecheck": "nuxt typecheck",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "nuxt": "4.5.2",
+    "@nuxt/ui": "4.10.0",
+    "vue": "3.5.44",
+    "maplibre-gl": "6.4.1",
+    "@atlas/api-client": "workspace:*",
+    "zod": "4.3.6",
+    "tailwindcss": "4.3.3",
+    "d3-interpolate": "3.0.1",
+    "d3-format": "3.1.2"
+  },
+  "devDependencies": {
+    "vue-tsc": "3.3.11",
+    "typescript": "5.9.3"
+  }
+}

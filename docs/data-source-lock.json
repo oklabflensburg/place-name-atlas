@@ -1,0 +1,44 @@
+{
+  "id": "bkg-2024-r3",
+  "label": "BKG · Deutschland · 2024",
+  "scope": "Deutschland",
+  "population_geometry_date": "2024-12-31",
+  "sources": [
+    {
+      "id": "gn-2024-056b27d0bcdf",
+      "product": "GN250",
+      "version": "2024-12",
+      "data_date": "2024-12-31",
+      "retrieved_at": "2026-10-21",
+      "url": "https://daten.gdz.bkg.bund.de/produkte/sonstige/gn250/2024/gn250.utm32s.csv.zip",
+      "sha256": "056b27d0bcdff4f176836ee4912126f46ecf25adb114c730f8205da7fc45fc12",
+      "license": "dl-de/by-2-0",
+      "attribution": "© BKG (2026) dl-de/by-2-0, Datenquellen: https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/datenquellen_gn250.pdf · GN250",
+      "original_crs": "EPSG:25832"
+    },
+    {
+      "id": "vg25-2024-8f3dd2dc3fb9",
+      "product": "VG25",
+      "version": "2024-12",
+      "data_date": "2024-12-31",
+      "retrieved_at": "2026-10-21",
+      "url": "https://daten.gdz.bkg.bund.de/produkte/vg/vg25_ebenen/2024-12/vg25.utm32s.gpkg.zip",
+      "sha256": "8f3dd2dc3fb9575eddd95e88b3153d148274e790a2e8d79a6d992d4a57988d8a",
+      "license": "CC-BY-4.0",
+      "attribution": "© BKG (2026) CC BY 4.0, Datenquellen: https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/datenquellen_vg25.pdf · VG25",
+      "original_crs": "EPSG:25832"
+    },
+    {
+      "id": "ew-2024-51a31279653e",
+      "product": "VG250-EW",
+      "version": "2024-12",
+      "data_date": "2024-12-31",
+      "retrieved_at": "2026-10-21",
+      "url": "https://daten.gdz.bkg.bund.de/produkte/vg/vg250-ew_ebenen_1231/2024/vg250-ew_12-31.utm32s.gpkg.ebenen.zip",
+      "sha256": "51a31279653edc1488c98484ddbc346dcd9f77cf0b1d6a75cd2179da57ed962f",
+      "license": "dl-de/by-2-0",
+      "attribution": "© BKG (2026) dl-de/by-2-0, Datenquellen: https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/datenquellen_vg_nuts.pdf · VG250-EW",
+      "original_crs": "EPSG:25832"
+    }
+  ]
+}

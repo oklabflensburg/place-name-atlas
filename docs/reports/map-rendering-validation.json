@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-21",
+  "cause_evidence": {
+    "confirmed_code_defect": "Legacy immutable polygon geometry could be accepted as circle-center geometry without runtime validation. Reproduced in regression tests.",
+    "original_tab": "User confirmed dots visible after reload; its previously cached response was not captured, so the original trigger cannot be proved retrospectively."
+  },
+  "changes": [
+    "versioned circle representation independent of grid ID",
+    "geometry cache revalidation and legacy URL bypass",
+    "runtime coordinates/viewBox/cell-coverage/denominator/count validation",
+    "width-driven map stage with absolutely positioned SVG",
+    "explicit loading/error/empty/no-match states",
+    "browser assertions for actual circle pixels and stale-response recovery",
+    "regular Playwright manager shutdown via SIGTERM"
+  ],
+  "local_checks": {
+    "unit": {
+      "passed": 35,
+      "failed": 0,
+      "pending": 0,
+      "real_input": "Actual nginx API response replayed through the frontend validator"
+    },
+    "python": {
+      "passed": 21,
+      "skipped": 20,
+      "skip_reason": "TEST_DATABASE_URL not provided"
+    },
+    "typecheck": "passed",
+    "production_build": "passed",
+    "ssr": "passed; not a layout or browser assertion",
+    "sql": "passed using disposable postgres --single cluster and real BKG bundle"
+  },
+  "host_api": {
+    "representation": "circle-centers-v1",
+    "geometry_cells": 1062,
+    "occupied_cells": 1006,
+    "denominator": 45858,
+    "totals": [
+      3218,
+      1342,
+      153,
+      1323,
+      2088,
+      3933,
+      2711,
+      1256,
+      916,
+      60
+    ],
+    "full_circles_inside_viewbox": 1062
+  },
+  "host_browser": {
+    "initial_desktop": "10 maps visibly painted; actual SVG screenshot pixel counts and manual image inspection",
+    "source": "docs/reports/maps-host-initial-diagnosis.json",
+    "interaction_suite": "Awaiting final host summary; desktop and mobile artifacts received",
+    "export": "CSS-resolution screenshot capture prepared to replace oversized mobile image"
+  },
+  "entry": "http://127.0.0.1:8080",
+  "start": "pnpm preview:local",
+  "database_changes": "No changes to the running database, no reset, no import, no migration change"
+}

@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-21",
+  "unit": {
+    "passed": 17
+  },
+  "python": {
+    "passed": 20,
+    "skipped": 20,
+    "reason": "No TEST_DATABASE_URL; isolated PostGIS SQL verification executed separately"
+  },
+  "postgis": {
+    "execution": "postgres --single, isolated temporary cluster, no HTTP/browser tests",
+    "synthetic": {
+      "dataset": "synthetic-v1",
+      "places": 19,
+      "totals": [
+        4,
+        1,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        2
+      ],
+      "occupied_cells": 9,
+      "geometry_cells": 96,
+      "cell_distribution": {
+        "minimum": 1,
+        "quartiles": [
+          2,
+          2,
+          2
+        ],
+        "maximum": 3,
+        "below_ten": 9
+      },
+      "values_cold_ms": 29.2,
+      "geometry_cold_ms": 126.4,
+      "geometry_bytes": 4997,
+      "values_bytes": 765,
+      "checks": [
+        "production PostGIS SQL",
+        "every cell numerator and denominator against Python source oracle",
+        "all ten counts against Python source oracle",
+        "distinct objects with name variants",
+        "overlapping ach/bach",
+        "separate ing/ingen",
+        "region and kind denominator",
+        "zero versus no data, including all ten maps with zero hits",
+        "cell names and pagination",
+        "metric grid, identical circle centers and source coverage",
+        "explicit suffix variants count each place once"
+      ]
+    },
+    "real": {
+      "dataset": "bkg-2024-r3",
+      "places": 45858,
+      "totals": [
+        3218,
+        1342,
+        153,
+        1323,
+        2088,
+        3933,
+        2711,
+        1256,
+        916,
+        60
+      ],
+      "occupied_cells": 1006,
+      "geometry_cells": 1062,
+      "cell_distribution": {
+        "minimum": 1,
+        "quartiles": [
+          32,
+          45,
+          58
+        ],
+        "maximum": 126,
+        "below_ten": 66
+      },
+      "values_cold_ms": 1316.5,
+      "geometry_cold_ms": 1550.5,
+      "geometry_bytes": 141548,
+      "values_bytes": 66046,
+      "checks": [
+        "production PostGIS SQL",
+        "every cell numerator and denominator against Python source oracle",
+        "all ten counts against Python source oracle",
+        "distinct objects with name variants",
+        "overlapping ach/bach",
+        "separate ing/ingen",
+        "region and kind denominator",
+        "zero versus no data, including all ten maps with zero hits",
+        "cell names and pagination",
+        "metric grid, identical circle centers and source coverage",
+        "explicit suffix variants count each place once"
+      ]
+    },
+    "ratio_10_of_40": {
+      "dataset": "ratio-40",
+      "places": 40,
+      "totals": [
+        0,
+        0,
+        0,
+        10,
+        0,
+        30,
+        0,
+        0,
+        0,
+        0
+      ],
+      "occupied_cells": 1,
+      "geometry_cells": 96,
+      "cell_distribution": {
+        "minimum": 40,
+        "quartiles": [
+          40,
+          40,
+          40
+        ],
+        "maximum": 40,
+        "below_ten": 0
+      },
+      "values_cold_ms": 29.6,
+      "geometry_cold_ms": 103.7,
+      "geometry_bytes": 4993,
+      "values_bytes": 254,
+      "checks": [
+        "production PostGIS SQL",
+        "every cell numerator and denominator against Python source oracle",
+        "all ten counts against Python source oracle",
+        "distinct objects with name variants",
+        "overlapping ach/bach",
+        "separate ing/ingen",
+        "region and kind denominator",
+        "zero versus no data, including all ten maps with zero hits",
+        "cell names and pagination",
+        "metric grid, identical circle centers and source coverage",
+        "explicit suffix variants count each place once"
+      ]
+    },
+    "single_place_extreme": {
+      "dataset": "single-place",
+      "places": 1,
+      "totals": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "occupied_cells": 1,
+      "geometry_cells": 96,
+      "cell_distribution": {
+        "minimum": 1,
+        "quartiles": [
+          1,
+          1,
+          1
+        ],
+        "maximum": 1,
+        "below_ten": 1
+      },
+      "values_cold_ms": 30.5,
+      "geometry_cold_ms": 109.9,
+      "geometry_bytes": 4997,
+      "values_bytes": 252,
+      "checks": [
+        "production PostGIS SQL",
+        "every cell numerator and denominator against Python source oracle",
+        "all ten counts against Python source oracle",
+        "distinct objects with name variants",
+        "overlapping ach/bach",
+        "separate ing/ingen",
+        "region and kind denominator",
+        "zero versus no data, including all ten maps with zero hits",
+        "cell names and pagination",
+        "metric grid, identical circle centers and source coverage",
+        "explicit suffix variants count each place once"
+      ]
+    }
+  },
+  "typecheck": "passed",
+  "build": "passed",
+  "buildFingerprintCurrent": true,
+  "ssr": {
+    "execution": "Production Nuxt SSR through localFetch with the listener replaced by a no-op, no network or browser",
+    "index": 200,
+    "serverRenderedCards": 10,
+    "defaultEndings": 10,
+    "method": 200,
+    "tenCardsBeforeHydration": true,
+    "colorModesInInitialHTML": 2,
+    "webHealthIdentity": 200
+  },
+  "browser": {
+    "executed": false,
+    "chromiumAttempted": true,
+    "failure": "[pid=56][err] [1021/212520.164024:FATAL:content/browser/sandbox_host_linux.cc:41] Check failed: . shutdown: Operation not permitted (1)",
+    "suiteAttempted": true,
+    "suiteFailure": "2026-10-21T19:31:38.900Z pw:webserver Error while checking if http://127.0.0.1:8080/health/proxy is available: connect EPERM 127.0.0.1:8080 - Local (undefined:undefined)",
+    "screenshotsCreated": false
+  },
+  "host": {
+    "inspected": false,
+    "reason": "Isolated PID and network namespaces; escalation rejected by execution policy",
+    "processesStopped": 0
+  },
+  "startup": {
+    "fullStackVerified": false,
+    "preflightFailureCleanup": {
+      "execution": "Actual repeated preflight failure in restricted environment; no services spawned",
+      "attempts": 2,
+      "failures": [
+        "Port 8000 kann nicht geprüft werden: EPERM. Keine Dienste gestartet.",
+        "Port 8000 kann nicht geprüft werden: EPERM. Keine Dienste gestartet."
+      ],
+      "lockRemovedAfterEach": true,
+      "successfulFullStack": false
+    },
+    "managerLockLeft": false
+  }
+}

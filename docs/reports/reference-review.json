@@ -1,0 +1,41 @@
+{
+  "repository": "https://github.com/moritzstefaner/ach-ingen-zell",
+  "reviewed_at": "2026-10-21",
+  "access": "Connected GitHub fetch_file; all six files read in full",
+  "files": [
+    {
+      "path": "src/jsx/main.jsx",
+      "sha": "a0f4b9e380bd515864e0d363cd64ff56fa67ff47"
+    },
+    {
+      "path": "src/jsx/Map.jsx",
+      "sha": "38a0158056ea3df769358e18a06275963c59ab24"
+    },
+    {
+      "path": "src/jsx/SuffixList.jsx",
+      "sha": "0c12790d64c70db41b360094705f183c414cd94e"
+    },
+    {
+      "path": "src/sass/main.sass",
+      "sha": "6f2f29b49c442f08b312caccb213dd8924759758"
+    },
+    {
+      "path": "README.md",
+      "sha": "b2343dcb2cc626bd1f770690a20fa5c2c8cd8cf3"
+    },
+    {
+      "path": "License.md",
+      "sha": "ead7a4b05a82080fb55d53f0918f61c90b6056dd"
+    }
+  ],
+  "findings": {
+    "binning": "Mercator projected screen-space hexbin radius 3; shared bins",
+    "drawing": "SVG circle, r=2.5, not hexagonal polygons",
+    "scale": "Reversed viridis; per-map maximum only from bins with more than 20 places",
+    "percentage_bug": "fraction.toFixed(3) followed by percent sign, no multiplication by 100",
+    "variants": "SuffixList groups variants by default, including ing and ingen",
+    "input": "new RegExp from suffix strings, not ported",
+    "license": "Apache License 2.0, Copyright 2016 Moritz Stefaner"
+  },
+  "implementation": "Independent Vue/SVG and PostGIS implementation. Principles retained, metric square-cell centers and explicit variants adapted. No reference source code copied."
+}

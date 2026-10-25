@@ -1,0 +1,57 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    services:
+      postgis:
+        image: postgis/postgis:18-3.6@sha256:b4466ea2ba7e3af54fcbba996d45325720f4b3ecb4f43f99b2f41367dc196f23
+        env:
+          POSTGRES_PASSWORD: test-only-password
+          POSTGRES_DB: postgres
+        ports: ['55439:5432']
+        options: >-
+          --health-cmd 'pg_isready -U postgres -d postgres'
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      TEST_ADMIN_URL: postgresql://postgres:test-only-password@127.0.0.1:55439/postgres
+      UV_LINK_MODE: copy
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: astral-sh/setup-uv@94527f2e458b27549849d47d273a16bec83a01e9 # v7
+        with:
+          version: '0.12.5'
+          python-version: '3.13.15'
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '22.22.1'
+      - run: npm install -g pnpm@12.14.0
+      - run: uv sync --locked
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test:e2e --backend
+      - run: pnpm test
+      - run: pnpm typecheck
+      - run: make client && git diff --exit-code -- packages/api-client
+      - run: python3 scripts/generate-fixture.py && git diff --exit-code -- tests/fixtures/synthetic.json
+      - run: pnpm build
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e
+      - name: Install matching PostgreSQL client for restore test
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-common
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y postgresql-client-18
+      - run: pnpm test:e2e --restore
+      - name: Verify container build and nginx routing
+        run: |
+          cp .env.example .env
+          docker compose --env-file .env -f infra/compose.yaml config --quiet
+          docker compose --env-file .env -f infra/compose.yaml up --build --wait
+          docker compose --env-file .env -f infra/compose.yaml run --rm importer import tests/fixtures/synthetic.json
+          docker compose --env-file .env -f infra/compose.yaml run --rm importer publish synthetic-v1
+          curl --fail http://127.0.0.1:8080/health/ready
+          curl --fail http://127.0.0.1:8080/api/v1/datasets
+          curl --fail http://127.0.0.1:8080/methodik

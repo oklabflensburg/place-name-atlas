@@ -1,0 +1,599 @@
+{
+  "dataset": {
+    "id": "synthetic-v1",
+    "label": "Testdaten · synthetisch",
+    "synthetic": true,
+    "scope": "Synthetische Sonderfälle",
+    "geometry_date": "2024-12-31",
+    "population_date": "2024-12-31",
+    "gn_source": "synthetic-GN250",
+    "vg_source": "synthetic-VG25",
+    "ew_source": "synthetic-VG250-EW"
+  },
+  "sources": [
+    {
+      "id": "synthetic-GN250",
+      "product": "GN250",
+      "version": "synthetic-v1",
+      "data_date": "2024-12-31",
+      "retrieved_at": "2026-10-21",
+      "url": "https://example.invalid/synthetic-fixture",
+      "sha256": "8a012bc257fa6db55faba3bfe0be02df07cff3d86e58c1eaa72a10f47bbb5dff",
+      "license": "CC0-1.0 (synthetic test data)",
+      "attribution": "Synthetische Testdaten · Ortsnamenatlas",
+      "original_crs": "EPSG:4326"
+    },
+    {
+      "id": "synthetic-VG25",
+      "product": "VG25",
+      "version": "synthetic-v1",
+      "data_date": "2024-12-31",
+      "retrieved_at": "2026-10-21",
+      "url": "https://example.invalid/synthetic-fixture",
+      "sha256": "3fdfb5364bab1fd88a74bc9edc6819d6ccaf3e2a8eae50c19816ea61f0e8dd5d",
+      "license": "CC0-1.0 (synthetic test data)",
+      "attribution": "Synthetische Testdaten · Ortsnamenatlas",
+      "original_crs": "EPSG:4326"
+    },
+    {
+      "id": "synthetic-VG250-EW",
+      "product": "VG250-EW",
+      "version": "synthetic-v1",
+      "data_date": "2024-12-31",
+      "retrieved_at": "2026-10-21",
+      "url": "https://example.invalid/synthetic-fixture",
+      "sha256": "8efbd3659c2356b9360594e9c4f51458da95bcf6e3d419e2cc83ed23ac2d35c3",
+      "license": "CC0-1.0 (synthetic test data)",
+      "attribution": "Synthetische Testdaten · Ortsnamenatlas",
+      "original_crs": "EPSG:4326"
+    }
+  ],
+  "areas": [
+    {
+      "level": "state",
+      "code": "01",
+      "name": "Testland Nord",
+      "ars": "010000000000",
+      "source_id": "synthetic:01",
+      "ibz": "60",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9,
+              53
+            ],
+            [
+              11,
+              53
+            ],
+            [
+              11,
+              55
+            ],
+            [
+              9,
+              55
+            ],
+            [
+              9,
+              53
+            ]
+          ]
+        ]
+      },
+      "parent_code": null
+    },
+    {
+      "level": "district",
+      "code": "01001",
+      "name": "Testkreis",
+      "ars": "010010000000",
+      "source_id": "synthetic:01001",
+      "ibz": "60",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9,
+              53
+            ],
+            [
+              11,
+              53
+            ],
+            [
+              11,
+              55
+            ],
+            [
+              9,
+              55
+            ],
+            [
+              9,
+              53
+            ]
+          ]
+        ]
+      },
+      "parent_code": "01"
+    },
+    {
+      "level": "municipality",
+      "code": "01001001",
+      "name": "Testbach",
+      "ars": "010010010000",
+      "source_id": "synthetic:01001001",
+      "ibz": "60",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9,
+              53
+            ],
+            [
+              10,
+              53
+            ],
+            [
+              10,
+              55
+            ],
+            [
+              9,
+              55
+            ],
+            [
+              9,
+              53
+            ]
+          ]
+        ]
+      },
+      "parent_code": "01001"
+    },
+    {
+      "level": "municipality",
+      "code": "01001002",
+      "name": "Testingen",
+      "ars": "010010020000",
+      "source_id": "synthetic:01001002",
+      "ibz": "60",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10,
+              53
+            ],
+            [
+              11,
+              53
+            ],
+            [
+              11,
+              55
+            ],
+            [
+              10,
+              55
+            ],
+            [
+              10,
+              53
+            ]
+          ]
+        ]
+      },
+      "parent_code": "01001"
+    },
+    {
+      "level": "municipality",
+      "code": "01001001",
+      "name": "Testbach",
+      "ars": "010010010000",
+      "source_id": "synthetic:01001001",
+      "ibz": "60",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              11.1,
+              53
+            ],
+            [
+              11.2,
+              53
+            ],
+            [
+              11.2,
+              53.1
+            ],
+            [
+              11.1,
+              53.1
+            ],
+            [
+              11.1,
+              53
+            ]
+          ]
+        ]
+      },
+      "parent_code": "01001"
+    }
+  ],
+  "places": [
+    {
+      "source_id": "SYNTH-000",
+      "object_class": "AX_Ortslage",
+      "name": "Testbach",
+      "alternatives": [],
+      "district": true,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2,
+          53.3
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-001",
+      "object_class": "AX_Ortslage",
+      "name": "Steinach",
+      "alternatives": [],
+      "district": false,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.299999999999999,
+          53.3
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-002",
+      "object_class": "AX_Ortslage",
+      "name": "Testingen",
+      "alternatives": [],
+      "district": false,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.399999999999999,
+          53.3
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-003",
+      "object_class": "AX_Ortslage",
+      "name": "Testing",
+      "alternatives": [],
+      "district": true,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.5,
+          53.3
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-004",
+      "object_class": "AX_Ortslage",
+      "name": "OTTERDORF",
+      "alternatives": [
+        "Otterbach",
+        "OTTERBACH"
+      ],
+      "district": false,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.6,
+          53.3
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-005",
+      "object_class": "AX_Ortslage",
+      "name": "Mühlenbek",
+      "alternatives": [],
+      "district": false,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.7,
+          53.3
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-006",
+      "object_class": "AX_Ortslage",
+      "name": "Muehlenbeek",
+      "alternatives": [],
+      "district": true,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.799999999999999,
+          53.3
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-007",
+      "object_class": "AX_Ortslage",
+      "name": "Großby",
+      "alternatives": [],
+      "district": false,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2,
+          53.5
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-008",
+      "object_class": "AX_Ortslage",
+      "name": "Grossby",
+      "alternatives": [],
+      "district": false,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.299999999999999,
+          53.5
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-009",
+      "object_class": "AX_Ortslage",
+      "name": "Dorf_heim",
+      "alternatives": [],
+      "district": true,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.399999999999999,
+          53.5
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-010",
+      "object_class": "AX_Ortslage",
+      "name": "Dorf%heim",
+      "alternatives": [],
+      "district": false,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.5,
+          53.5
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-011",
+      "object_class": "AX_Ortslage",
+      "name": "Testhausen (Nord)",
+      "alternatives": [],
+      "district": false,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.6,
+          53.5
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-012",
+      "object_class": "AX_Ortslage",
+      "name": "Testhausen",
+      "alternatives": [],
+      "district": true,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.7,
+          53.5
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-013",
+      "object_class": "AX_Ortslage",
+      "name": "Testhusen",
+      "alternatives": [],
+      "district": false,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.799999999999999,
+          53.5
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-014",
+      "object_class": "AX_Ortslage",
+      "name": "Testhuusen",
+      "alternatives": [],
+      "district": false,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2,
+          53.699999999999996
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-015",
+      "object_class": "AX_Ortslage",
+      "name": "Testbüll",
+      "alternatives": [],
+      "district": true,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.299999999999999,
+          53.699999999999996
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-016",
+      "object_class": "AX_Ortslage",
+      "name": "Testbüttel",
+      "alternatives": [],
+      "district": false,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.399999999999999,
+          53.699999999999996
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-017",
+      "object_class": "AX_Ortslage",
+      "name": "=FORMULA()",
+      "alternatives": [],
+      "district": false,
+      "virtual": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.5,
+          53.699999999999996
+        ]
+      },
+      "municipality_code": "01001001"
+    },
+    {
+      "source_id": "SYNTH-boundary",
+      "object_class": "AX_Ortslage",
+      "name": "Grenzach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10,
+          54
+        ]
+      },
+      "alternatives": [],
+      "district": true
+    },
+    {
+      "source_id": "SYNTH-water",
+      "object_class": "Gewaesser",
+      "name": "Otterbach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.5,
+          54
+        ]
+      }
+    },
+    {
+      "source_id": "SYNTH-virtual",
+      "object_class": "AX_Ortslage",
+      "name": "Virtualhausen",
+      "virtual": true,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.5,
+          54
+        ]
+      }
+    },
+    {
+      "source_id": "SYNTH-empty",
+      "object_class": "AX_Ortslage",
+      "name": "",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.5,
+          54
+        ]
+      }
+    }
+  ],
+  "population": [
+    {
+      "level": "municipality",
+      "code": "01001001",
+      "gf": 4,
+      "value": 1234
+    },
+    {
+      "level": "municipality",
+      "code": "01001001",
+      "gf": 2,
+      "value": 1234
+    },
+    {
+      "level": "municipality",
+      "code": "01001002",
+      "gf": 4,
+      "value": null
+    }
+  ],
+  "population_date": "2024-12-31",
+  "population_geometry_date": "2024-12-31"
+}

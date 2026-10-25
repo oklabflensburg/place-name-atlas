@@ -1,0 +1,225 @@
+{
+  "source_objects": 172403,
+  "accepted": 45858,
+  "excluded": 126545,
+  "exclusion_reasons": {
+    "virtual_without_settlement": 966,
+    "not_settlement": 125579
+  },
+  "invalid_names": 0,
+  "invalid_geometries": 0,
+  "duplicate_suspects": 0,
+  "unassigned": 0,
+  "ambiguous_assignment": 0,
+  "source_spatial_disagreement": 17,
+  "missing_population": 0,
+  "ambiguous_population": 0,
+  "population_unmatched": 0,
+  "errors": [],
+  "normalization": "nfc-casefold-ucd15.1-v1",
+  "importer_version": "0.1.0",
+  "administrative_source_rows": 11410,
+  "administrative_exclusions": [
+    {
+      "level": "state",
+      "code": "07",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet (Rheinland-Pfalz)",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "state",
+      "code": "10",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet (Saarland)",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "state",
+      "code": "08",
+      "name": "Baden-Württemberg (Bodensee)",
+      "reason": "bodensee_without_administrative_structure"
+    },
+    {
+      "level": "state",
+      "code": "09",
+      "name": "Bayern (Bodensee)",
+      "reason": "bodensee_without_administrative_structure"
+    },
+    {
+      "level": "district",
+      "code": "07932",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Eifelk. Bitburg-Prüm]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "district",
+      "code": "07935",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Lkr. Trier-Saarburg]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "district",
+      "code": "10942",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Lkr. Merzig-Wadern]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932212",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Dahnen]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932214",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Dasburg]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932294",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Preischeid]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932310",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Sevenig (Our)]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932001",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Affler]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932004",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Ammeldingen a.d. Our]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932019",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Bollendorf]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932028",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Echternacherbrück]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932041",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Gemünd]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932042",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Gentingen]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932066",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Keppeshausen]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932082",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Minden]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932112",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Roth an der Our]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932127",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Übereisenbach]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932130",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Waldhof-Falkenstein]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07932131",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Wallendorf]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07935095",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Nittel]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07935096",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Oberbillig]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07935133",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Temmels]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07935146",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Wellen]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07935073",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Langsur]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07935111",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Ralingen]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07935104",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Palzem]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "07935149",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Wincheringen]",
+      "reason": "joint_sovereignty_not_municipality"
+    },
+    {
+      "level": "municipality",
+      "code": "10942115",
+      "name": "Deutsch-Luxemburgisches Hoheitsgebiet [Perl]",
+      "reason": "joint_sovereignty_not_municipality"
+    }
+  ],
+  "invalid_geometry_details": [],
+  "previous_accepted": null,
+  "accepted_delta": null,
+  "removed_source_ids": 0,
+  "new_source_ids": 45858,
+  "changed_names": 0,
+  "changed_positions": 0,
+  "status": "validated",
+  "duration_seconds": 769.557
+}

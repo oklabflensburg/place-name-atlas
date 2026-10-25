@@ -1,0 +1,9 @@
+Gestalterische und technische Inspiration der Kartenübersicht:
+-ach, -ingen, -zell, Copyright 2016 Moritz Stefaner
+https://github.com/moritzstefaner/ach-ingen-zell
+Referenzlizenz: Apache License 2.0 (LICENSES/ach-ingen-zell-Apache-2.0.txt).
+
+Die Vue-/Nuxt-Komponenten und die metrische Backend-Auswertung wurden im
+Ortsnamenatlas eigenständig umgesetzt. Es wurden keine React-, Sass- oder
+Webpack-Quelldateien aus der Referenz übernommen. Die mitgelieferte
+Referenzlizenz ändert nicht die Lizenz des Ortsnamenatlas oder seiner Daten.

@@ -1,0 +1,58 @@
+{
+  "source": "test-results/real-real-GN250-circles-co-85035-d-screenshots-through-nginx-desktop/trace.zip",
+  "execution": "Actual HTTP responses from host Playwright trace through nginx, parsed in this session",
+  "geometry_http": {
+    "status": 200,
+    "headers": {
+      "connection": "keep-alive",
+      "content-length": "141552",
+      "content-type": "application/json",
+      "date": "Wed, 21 Oct 2026 20:14:21 GMT",
+      "permissions-policy": "camera=(), microphone=(), geolocation=()",
+      "referrer-policy": "same-origin",
+      "server": "nginx",
+      "x-content-type-options": "nosniff",
+      "cache-control": "private, max-age=0, must-revalidate",
+      "x-dataset-id": "bkg-2024-r3",
+      "x-grid-id": "laea-3035-square-20000-origin-0-v1",
+      "x-grid-representation": "circle-centers-v1",
+      "x-request-id": "a9a17205-8d3d-44a8-bc77-eabe50681a0d"
+    },
+    "url": "http://127.0.0.1:8080/api/v1/grid/geometry?q=%7B%22schema_version%22%3A1%2C%22dataset%22%3A%22bkg-2024-r3%22%2C%22regions%22%3A%5B%5D%2C%22kinds%22%3A%5B%5D%2C%22bbox%22%3Anull%2C%22groups%22%3A%5B%5D%7D&representation=circle-centers-v1"
+  },
+  "values_http": {
+    "status": 200,
+    "headers": {
+      "connection": "keep-alive",
+      "content-length": "66046",
+      "content-type": "application/json",
+      "date": "Wed, 21 Oct 2026 20:14:19 GMT",
+      "permissions-policy": "camera=(), microphone=(), geolocation=()",
+      "referrer-policy": "same-origin",
+      "server": "nginx",
+      "x-content-type-options": "nosniff",
+      "cache-control": "private, max-age=86400, immutable",
+      "x-dataset-id": "bkg-2024-r3",
+      "x-grid-id": "laea-3035-square-20000-origin-0-v1",
+      "x-request-id": "4c71a300-a0d9-429f-bd7a-927a2003d3b8"
+    },
+    "url": "http://127.0.0.1:8080/api/v1/grid/values?q=%7B%22schema_version%22%3A1%2C%22dataset%22%3A%22bkg-2024-r3%22%2C%22regions%22%3A%5B%5D%2C%22kinds%22%3A%5B%5D%2C%22bbox%22%3Anull%2C%22groups%22%3A%5B%7B%22id%22%3A%22g0%22%2C%22title%22%3A%22-ach%22%2C%22color%22%3A%22%23126b61%22%2C%22patterns%22%3A%5B%7B%22mode%22%3A%22suffix%22%2C%22value%22%3A%22ach%22%7D%5D%2C%22exclusions%22%3A%5B%5D%7D%2C%7B%22id%22%3A%22g1%22%2C%22title%22%3A%22-ingen%22%2C%22color%22%3A%22%23126b61%22%2C%22patterns%22%3A%5B%7B%22mode%22%3A%22suffix%22%2C%22value%22%3A%22ingen%22%7D%5D%2C%22exclusions%22%3A%5B%5D%7D%2C%7B%22id%22%3A%22g2%22%2C%22title%22%3A%22-zell%22%2C%22color%22%3A%22%23126b61%22%2C%22patterns%22%3A%5B%7B%22mode%22%3A%22suffix%22%2C%22value%22%3A%22zell%22%7D%5D%2C%22exclusions%22%3A%5B%5D%7D%2C%7B%22id%22%3A%22g3%22%2C%22title%22%3A%22-heim%22%2C%22color%22%3A%22%23126b61%22%2C%22patterns%22%3A%5B%7B%22mode%22%3A%22suffix%22%2C%22value%22%3A%22heim%22%7D%5D%2C%22exclusions%22%3A%5B%5D%7D%2C%7B%22id%22%3A%22g4%22%2C%22title%22%3A%22-hausen%22%2C%22color%22%3A%22%23126b61%22%2C%22patterns%22%3A%5B%7B%22mode%22%3A%22suffix%22%2C%22value%22%3A%22hausen%22%7D%5D%2C%22exclusions%22%3A%5B%5D%7D%2C%7B%22id%22%3A%22g5%22%2C%22title%22%3A%22-dorf%22%2C%22color%22%3A%22%23126b61%22%2C%22patterns%22%3A%5B%7B%22mode%22%3A%22suffix%22%2C%22value%22%3A%22dorf%22%7D%5D%2C%22exclusions%22%3A%5B%5D%7D%2C%7B%22id%22%3A%22g6%22%2C%22title%22%3A%22-bach%22%2C%22color%22%3A%22%23126b61%22%2C%22patterns%22%3A%5B%7B%22mode%22%3A%22suffix%22%2C%22value%22%3A%22bach%22%7D%5D%2C%22exclusions%22%3A%5B%5D%7D%2C%7B%22id%22%3A%22g7%22%2C%22title%22%3A%22-itz%22%2C%22color%22%3A%22%23126b61%22%2C%22patterns%22%3A%5B%7B%22mode%22%3A%22suffix%22%2C%22value%22%3A%22itz%22%7D%5D%2C%22exclusions%22%3A%5B%5D%7D%2C%7B%22id%22%3A%22g8%22%2C%22title%22%3A%22-ow%22%2C%22color%22%3A%22%23126b61%22%2C%22patterns%22%3A%5B%7B%22mode%22%3A%22suffix%22%2C%22value%22%3A%22ow%22%7D%5D%2C%22exclusions%22%3A%5B%5D%7D%2C%7B%22id%22%3A%22g9%22%2C%22title%22%3A%22-by%22%2C%22color%22%3A%22%23126b61%22%2C%22patterns%22%3A%5B%7B%22mode%22%3A%22suffix%22%2C%22value%22%3A%22by%22%7D%5D%2C%22exclusions%22%3A%5B%5D%7D%5D%7D"
+  },
+  "representation": "circle-centers-v1",
+  "geometry_cells": 1062,
+  "occupied_cells": 1006,
+  "denominator": 45858,
+  "totals": [
+    3218,
+    1342,
+    153,
+    1323,
+    2088,
+    3933,
+    2711,
+    1256,
+    916,
+    60
+  ],
+  "full_circles_inside_viewbox": 1062
+}

@@ -1,0 +1,6 @@
+{
+  "host": "127.0.0.1",
+  "apiPort": 18000,
+  "webPort": 13000,
+  "nginxPort": 18080
+}

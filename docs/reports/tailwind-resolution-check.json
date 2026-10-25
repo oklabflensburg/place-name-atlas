@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-21T19:58:42.557Z",
+  "tailwindVersion": "4.3.3",
+  "base": "/home/awendelk/git/ortsnamenatlas/apps/web/app/assets",
+  "reproducedBeforeFix": true,
+  "tailwindImportCompiled": true,
+  "utilitiesGenerated": [
+    "text-sm",
+    "font-bold",
+    "grid",
+    "grid-cols-5"
+  ],
+  "browserTest": false,
+  "lockfileYamlValid": true,
+  "manifestAndLockfileConsistent": true,
+  "existingIntegrityAndSnapshotReused": true,
+  "fullPnpmInstall": "not executed: shared pnpm operation-lock directory is read-only; installed package linked within workspace for compilation checks",
+  "typecheck": "passed",
+  "unitTests": 28,
+  "unitTestsStatus": "passed",
+  "productionBuild": "passed",
+  "buildFingerprintCurrent": true
+}

@@ -1,0 +1,25 @@
+{
+  "values": {
+    "sql": "SELECT p.grid_x::text||'_'||p.grid_y::text id,\n            count(*) denominator,count(*) FILTER (WHERE (EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND (n.reversed LIKE :g0_p0 ESCAPE E'\\\\')) AND NOT EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND FALSE))) AS n0,count(*) FILTER (WHERE (EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND (n.reversed LIKE :g1_p0 ESCAPE E'\\\\')) AND NOT EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND FALSE))) AS n1,count(*) FILTER (WHERE (EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND (n.reversed LIKE :g2_p0 ESCAPE E'\\\\')) AND NOT EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND FALSE))) AS n2,count(*) FILTER (WHERE (EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND (n.reversed LIKE :g3_p0 ESCAPE E'\\\\')) AND NOT EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND FALSE))) AS n3,count(*) FILTER (WHERE (EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND (n.reversed LIKE :g4_p0 ESCAPE E'\\\\')) AND NOT EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND FALSE))) AS n4,count(*) FILTER (WHERE (EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND (n.reversed LIKE :g5_p0 ESCAPE E'\\\\')) AND NOT EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND FALSE))) AS n5,count(*) FILTER (WHERE (EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND (n.reversed LIKE :g6_p0 ESCAPE E'\\\\')) AND NOT EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND FALSE))) AS n6,count(*) FILTER (WHERE (EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND (n.reversed LIKE :g7_p0 ESCAPE E'\\\\')) AND NOT EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND FALSE))) AS n7,count(*) FILTER (WHERE (EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND (n.reversed LIKE :g8_p0 ESCAPE E'\\\\')) AND NOT EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND FALSE))) AS n8,count(*) FILTER (WHERE (EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND (n.reversed LIKE :g9_p0 ESCAPE E'\\\\')) AND NOT EXISTS (SELECT 1 FROM place_name n WHERE n.record_id=p.id AND FALSE))) AS n9\n            FROM place_record p WHERE p.dataset_id=:dataset GROUP BY p.grid_x,p.grid_y ORDER BY p.grid_y,p.grid_x",
+    "params": {
+      "dataset": "bkg-2024-r3",
+      "g0_p0": "hca%",
+      "g1_p0": "negni%",
+      "g2_p0": "llez%",
+      "g3_p0": "mieh%",
+      "g4_p0": "nesuah%",
+      "g5_p0": "frod%",
+      "g6_p0": "hcab%",
+      "g7_p0": "zti%",
+      "g8_p0": "wo%",
+      "g9_p0": "yb%"
+    }
+  },
+  "geometry": {
+    "sql": "WITH region AS (\n            SELECT ST_UnaryUnion(ST_Collect(ST_SimplifyPreserveTopology(ST_Transform(geom,3035),150))) g\n            FROM admin_area WHERE dataset_id=:dataset AND level='state'\n        ), area AS (SELECT g g FROM region),\n        cells AS (SELECT c.i,c.j,ST_CollectionExtract(ST_Intersection(c.geom,a.g),3) g\n            FROM area a CROSS JOIN LATERAL ST_SquareGrid(:size,a.g) c\n            WHERE ST_Intersects(c.geom,a.g))\n        SELECT jsonb_agg(jsonb_build_object('id',i::text||'_'||j::text,\n            'cx',(i+0.5)*:size,'cy',-(j+0.5)*:size) ORDER BY j,i) cells,\n            (SELECT ST_AsSVG(g,0,0) FROM area) outline,\n            (SELECT ARRAY[ST_XMin(g)-:size,-ST_YMax(g)-:size,\n                ST_XMax(g)-ST_XMin(g)+2*:size,ST_YMax(g)-ST_YMin(g)+2*:size] FROM area) viewbox,\n            (SELECT ARRAY[ST_XMin(ST_Transform(g,4326)),ST_YMin(ST_Transform(g,4326)),\n                          ST_XMax(ST_Transform(g,4326)),ST_YMax(ST_Transform(g,4326))] FROM area) bounds\n        FROM cells WHERE NOT ST_IsEmpty(g)",
+    "params": {
+      "dataset": "bkg-2024-r3",
+      "size": 20000
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "unit_frontend": {
+    "passed": 41,
+    "skipped": 1
+  },
+  "python": {
+    "passed": 24,
+    "skipped": 20
+  },
+  "typecheck": "passed",
+  "production_build": "passed",
+  "production_ssr": "passed",
+  "real_postgis_oracle": [
+    "45,858 objects, all cells and ten initial endings",
+    "twenty distinct endings in two batches",
+    "zero matches",
+    "Unicode Straße",
+    "ing + ingen variants with hingen exclusion",
+    "Schleswig-Holstein + district filter",
+    "eleventh suffix has one SQL query and no spatial work",
+    "warm suffix has no SQL queries"
+  ],
+  "browser_tests": {
+    "listed": 26,
+    "executed": false,
+    "attempt": "Playwright real config through nginx; stack startup failed before browser launch",
+    "reason": "Localhost sockets and port probes denied with EPERM; escalation automatically rejected"
+  },
+  "screenshot_eleventh": {
+    "created": false,
+    "planned_paths": [
+      "artifacts/overview-eleventh-desktop.png",
+      "artifacts/overview-eleventh-mobile.png"
+    ]
+  },
+  "http_ttfb_and_transfer": "not measured",
+  "browser_json_svg_and_visible_map": "not measured",
+  "database_untouched": "Existing runtime database was not modified; all SQL ran in a disposable isolated cluster",
+  "lockfile": "YAML parse and dependency-edge validation passed; clean install blocked by readonly shared store"
+}

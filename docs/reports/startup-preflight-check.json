@@ -1,0 +1,10 @@
+{
+  "execution": "Actual repeated preflight failure in restricted environment; no services spawned",
+  "attempts": 2,
+  "failures": [
+    "Port 8000 kann nicht geprüft werden: EPERM. Keine Dienste gestartet.",
+    "Port 8000 kann nicht geprüft werden: EPERM. Keine Dienste gestartet."
+  ],
+  "lockRemovedAfterEach": true,
+  "successfulFullStack": false
+}

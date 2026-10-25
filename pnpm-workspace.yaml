@@ -1,0 +1,9 @@
+packages:
+  - apps/web
+  - packages/api-client
+allowBuilds:
+  esbuild: true
+  '@parcel/watcher': true
+  sharp: true
+  vue-demi: true
+verifyDepsBeforeRun: false
