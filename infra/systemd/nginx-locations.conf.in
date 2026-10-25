@@ -1,0 +1,36 @@
+# Include inside the application's EXISTING server block.
+# Keep the existing listen, server_name and TLS configuration.
+client_max_body_size 32k;
+client_header_buffer_size 4k;
+large_client_header_buffers 4 64k;
+
+location /api/v1/ {
+    proxy_pass http://@HOST@:@API_PORT@;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For "";
+    proxy_set_header X-Forwarded-Proto "";
+    proxy_read_timeout 20s;
+    proxy_cache off;
+}
+
+location = /health/web {
+    proxy_pass http://@HOST@:@WEB_PORT@;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For "";
+    proxy_set_header X-Forwarded-Proto "";
+}
+
+location /health/ {
+    proxy_pass http://@HOST@:@API_PORT@;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For "";
+    proxy_set_header X-Forwarded-Proto "";
+}
+
+location / {
+    proxy_pass http://@HOST@:@WEB_PORT@;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For "";
+    proxy_set_header X-Forwarded-Proto "";
+}

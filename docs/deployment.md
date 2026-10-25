@@ -1,6 +1,6 @@
 # Deployment auf einem eigenen Server
 
-Diese Anleitung beschreibt den Betrieb von `oklabflensburg/place-name-atlas` auf einem einzelnen Linux-Server mit Docker Compose. Sie umfasst Erstinstallation, Datenübernahme, HTTPS, Aktualisierungen und Wiederherstellung. Für Entwicklung ohne Container siehe [Installation und Betrieb](operations.md).
+Diese Anleitung beschreibt den Betrieb von `oklabflensburg/place-name-atlas` auf einem einzelnen Linux-Server mit Docker Compose. Sie umfasst Erstinstallation, Datenübernahme, HTTPS, Aktualisierungen und Wiederherstellung. Für den Betrieb ohne Container mit vorhandenem nginx und PostgreSQL siehe [Frontend und Backend mit systemd](systemd.md); für Entwicklung siehe [Installation und Betrieb](operations.md).
 
 ## Aufbau und Voraussetzungen
 
