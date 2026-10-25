@@ -1,10 +1,11 @@
-"""Render application units and nginx locations without installing or starting services."""
+"""Render systemd units and complete nginx vHosts without installing or starting services."""
 import argparse
 import json
 import os
 from pathlib import Path
 import pwd
 import re
+import shlex
 import shutil
 import subprocess
 
@@ -45,7 +46,33 @@ def node_executable(command):
     return path
 
 
-def render(root, user, node):
+def config_file(root, path=None):
+    path = Path(path or "infra/systemd/production.json")
+    return (path if path.is_absolute() else root / path).resolve()
+
+
+def domain_name(value):
+    if not isinstance(value, str):
+        raise ValueError("Ein gültiger DNS-Hostname ist erforderlich")
+    value = value.lower().rstrip(".")
+    labels = value.split(".")
+    if len(value) > 253 or len(labels) < 2 or labels[-1].isdigit() or any(
+        not re.fullmatch(r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?", label) for label in labels
+    ):
+        raise ValueError("Ein gültiger DNS-Hostname ohne Schema, Port oder Pfad ist erforderlich")
+    return value
+
+
+def nginx_path(value):
+    value = str(value)
+    if not Path(value).is_absolute() or "$" in value or any(ord(char) < 32 for char in value):
+        raise ValueError("nginx-Pfade müssen absolut sein und dürfen keine Variablen oder Steuerzeichen enthalten")
+    return '"' + value.replace("\\", "\\\\").replace('"', '\\"') + '"'
+
+
+def render(root, user, node, config_path=None, domain=None, tls_certificate=None, tls_certificate_key=None,
+           acme_webroot=Path("/var/lib/place-name-atlas/acme"),
+           nginx_snippet=Path("/etc/nginx/snippets/place-name-atlas.locations.conf")):
     root = root.resolve()
     account = pwd.getpwnam(user)
     if account.pw_uid == 0:
@@ -55,13 +82,20 @@ def render(root, user, node):
         raise ValueError("Python-Umgebung fehlt; zuerst uv sync --locked ausführen")
     if not (root / ".env").is_file():
         raise ValueError("Bestehende .env mit der Runtimeverbindung fehlt")
-    config = json.loads((root / "infra/local.json").read_text())
-    ports = [config.get(key) for key in ("apiPort", "webPort", "nginxPort")]
-    if config.get("host") != "127.0.0.1" or any(type(port) is not int or not 1024 <= port <= 65535 for port in ports) or len(set(ports)) != 3:
-        raise ValueError("infra/local.json muss verschiedene gültige Ports und host=127.0.0.1 enthalten")
+    config_path = config_file(root, config_path)
+    config = json.loads(config_path.read_text())
+    ports = [config.get(key) for key in ("apiPort", "webPort")]
+    if config.get("host") != "127.0.0.1" or any(type(port) is not int or not 1024 <= port <= 65535 for port in ports) or len(set(ports)) != 2:
+        raise ValueError("Das Portprofil muss verschiedene gültige Ports und host=127.0.0.1 enthalten")
+    domain = domain_name(domain if domain is not None else config.get("domain"))
+    if bool(tls_certificate) != bool(tls_certificate_key):
+        raise ValueError("Zertifikat und Schlüssel müssen gemeinsam angegeben werden")
+    certificate = tls_certificate or Path("/etc/letsencrypt/live") / domain / "fullchain.pem"
+    certificate_key = tls_certificate_key or Path("/etc/letsencrypt/live") / domain / "privkey.pem"
     values = {
         "USER": unit_scalar(user), "WORKDIR": unit_scalar(root),
         "ENVFILE": unit_scalar(root / ".env"),
+        "CONFIG": unit_quote("ATLAS_LOCAL_CONFIG=" + str(config_path), command=True),
         "PYTHONPATH": unit_quote("PYTHONPATH=" + str(root / "apps/api"), command=True),
         "PYTHON": unit_quote(python, command=True),
         "API_SCRIPT": unit_quote(root / "scripts/serve-real.py", command=True),
@@ -72,11 +106,16 @@ def render(root, user, node):
         "PORT": unit_quote("PORT=" + str(config["webPort"])),
         "NITRO_PORT": unit_quote("NITRO_PORT=" + str(config["webPort"])),
     }
-    nginx_values = {"HOST": config["host"], "API_PORT": str(config["apiPort"]), "WEB_PORT": str(config["webPort"])}
+    nginx_values = {"HOST": config["host"], "API_PORT": str(config["apiPort"]), "WEB_PORT": str(config["webPort"]),
+                    "DOMAIN": domain, "ACME_WEBROOT": nginx_path(acme_webroot),
+                    "LOCATIONS": nginx_path(nginx_snippet), "TLS_CERTIFICATE": nginx_path(certificate),
+                    "TLS_CERTIFICATE_KEY": nginx_path(certificate_key),
+                    "CERTIFICATE_DIRECTORY": shlex.quote(str(Path(certificate).parent))}
     files = {}
-    for filename in ("place-name-atlas-api.service", "place-name-atlas-web.service", "nginx-locations.conf"):
+    for filename in ("place-name-atlas-api.service", "place-name-atlas-web.service", "nginx-locations.conf",
+                     "nginx-site.http.conf", "nginx-site.https.conf", "certbot-deploy-hook.sh"):
         template = (TEMPLATES / (filename + ".in")).read_text()
-        replacements = nginx_values if filename.endswith(".conf") else values
+        replacements = values if filename.endswith(".service") else nginx_values
         files[filename] = re.sub(r"@([A-Z_]+)@", lambda match: replacements[match[1]], template)
     return files
 
@@ -86,11 +125,19 @@ def main():
     parser.add_argument("--project-dir", type=Path, default=ROOT)
     parser.add_argument("--user", default=pwd.getpwuid(os.getuid()).pw_name)
     parser.add_argument("--node", default="node")
+    parser.add_argument("--config", type=Path, help="Portprofil, Standard: infra/systemd/production.json")
+    parser.add_argument("--domain", help="Domain aus dem Profil überschreiben")
+    parser.add_argument("--tls-certificate", type=Path)
+    parser.add_argument("--tls-certificate-key", type=Path)
+    parser.add_argument("--acme-webroot", type=Path, default=Path("/var/lib/place-name-atlas/acme"))
+    parser.add_argument("--nginx-snippet", type=Path, default=Path("/etc/nginx/snippets/place-name-atlas.locations.conf"))
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     try:
         node = node_executable(args.node)
-        files = render(args.project_dir, args.user, node)
+        profile = config_file(args.project_dir.resolve(), args.config)
+        files = render(args.project_dir, args.user, node, profile, args.domain, args.tls_certificate,
+                       args.tls_certificate_key, args.acme_webroot, args.nginx_snippet)
     except (ValueError, KeyError, OSError, subprocess.SubprocessError) as exc:
         parser.error(str(exc))
     output = args.output or args.project_dir.resolve() / "artifacts/systemd"
@@ -98,7 +145,7 @@ def main():
     for filename, content in files.items():
         (output / filename).write_text(content)
     print(json.dumps({"rendered": [str(output / name) for name in files],
-                      "user": args.user, "node": str(node)}, ensure_ascii=False, indent=2))
+                      "user": args.user, "node": str(node), "config": str(profile)}, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

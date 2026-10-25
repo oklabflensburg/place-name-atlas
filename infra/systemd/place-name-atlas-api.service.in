@@ -10,7 +10,7 @@ User=@USER@
 WorkingDirectory=@WORKDIR@
 EnvironmentFile=@ENVFILE@
 # Set the module path after EnvironmentFile, retaining its database settings.
-ExecStart=/usr/bin/env @PYTHONPATH@ PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 @PYTHON@ @API_SCRIPT@
+ExecStart=/usr/bin/env @CONFIG@ @PYTHONPATH@ PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 @PYTHON@ @API_SCRIPT@
 Restart=on-failure
 RestartSec=5
 TimeoutStopSec=30

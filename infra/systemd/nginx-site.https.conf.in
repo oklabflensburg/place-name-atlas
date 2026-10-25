@@ -1,0 +1,26 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name @DOMAIN@;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root @ACME_WEBROOT@;
+        default_type text/plain;
+        try_files $uri =404;
+    }
+
+    location / {
+        return 301 https://@DOMAIN@$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name @DOMAIN@;
+
+    ssl_certificate @TLS_CERTIFICATE@;
+    ssl_certificate_key @TLS_CERTIFICATE_KEY@;
+
+    include @LOCATIONS@;
+}
